@@ -37,7 +37,7 @@ function spew_nonsense()
 			return "ALANJIAO!!!";
 			break; }
 		case 4: {
-			return"Y'all are damn r99d";
+			return "Y'all are damn r99d";
 			break; }
 		case 5: {
 			return "Jin pls";
@@ -50,6 +50,9 @@ function spew_nonsense()
 			break; }
 		case 8: {
 			return "Guys I hate gedong :((";
+			break; }
+		case 9: {
+			return "*rubs head in anticlockwise motion with right hand*";
 			break; }
 		default: {
 			return "";	
