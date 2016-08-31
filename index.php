@@ -24,11 +24,10 @@ $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
-	
+
 	// message processing
 	$text = $update->message->text;
 	$words = explode(" ", $text);
-	
 	
     if ($words[0] == '/add' || $words[0] == '/add@bfpbot')
     {
@@ -38,18 +37,20 @@ try {
     {
 		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
     }
-    else if (rand(1,100) <= 20) {
+    else if (rand(1,100) <= 20) 
+    {
 		$msg = "Grandpa nyat is watching";
     }
+    else 
+    {
+    	$msg = "Yo";
+    }
     
-    
-    if ($msg != null) {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
-      	 	'chat_id' => $update->message->chat->id,
-    		'text' => $msg
- 		]);
- 	}
+	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
+	$response = $client->sendMessage([
+      	'chat_id' => $update->message->chat->id,
+		'text' => $msg
+ 	]);
     
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
