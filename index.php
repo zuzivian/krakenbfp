@@ -52,7 +52,8 @@ function spew_nonsense()
 			break;
 		case 9:
 			$msg = "I'm gay and I take bio";
-			break;												
+			break;
+		default:											
 	}
 }
 
@@ -88,13 +89,13 @@ if ($cmd == '/add' || $cmd == '/add@bfpbot')
 else if ($cmd == '/help' || $cmd == '/help@bfpbot') 
 {
 	// Sends a help message
-	$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands \n /nonsense - encourages the Kraken to spew some nonsense ";
+	$msg = "List of commands :\n /add - adds to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages the Kraken to spew some nonsense ";
 }
 
 else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
 {
 	// Spew nonsense.
-	spew_nonsense;
+	spew_nonsense();
 }
 
 else    
@@ -103,7 +104,7 @@ else
 	$randnum = rand(1,100);
 	if ($randnum == 1) 
 	{
-		spew_nonsense;
+		spew_nonsense();
 	}
 }
 
