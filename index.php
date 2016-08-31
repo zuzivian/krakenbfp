@@ -34,7 +34,7 @@ try {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
         	'chat_id' => $update->message->chat->id,
-        	'text' => "Currently broken. Sorry folks."
+        	'text' => "Currently broken. Sorry folks.."
      	]);
     }
     else if($words[0] == '/help')
