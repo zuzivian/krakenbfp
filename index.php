@@ -67,6 +67,26 @@ function spew_nonsense()
 	}
 }
 
+function spew_reply($keyword)
+{
+	$small_word = strtolower($keyword);
+	switch ($small_word) {
+		case "fak":
+			return "FAK NI BACK";
+		case "bij":
+			return "Yes that's you. Bij.";
+		case "shit":
+			return "I smell some of that shit coming from over yonder.";
+		case "celibate":
+			return "THAT'S NOT JIN";
+		case "dick":
+			return "oooh dickiesssss";
+		default:
+			return null;
+	}	
+
+}
+
 /* END FUNCTIONS */
 // -------------------------------------
 
@@ -110,13 +130,30 @@ else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot')
 
 else    
 {
+	// See if anything is worth a reply
+	for ($i = 0; $words[$i]; $i++) 
+	{
+		if ($msg = spew_reply($words[$i])) 
+		{
+			break;
+		}
+	}
+	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	$randnum = rand(1,50);
-	if ($randnum == 1) 
+	if (!$msg && rand(1,20) == 1) 
 	{
 		$msg = spew_nonsense();
 	}
+	
+	// Gives Kraken some chill.
+	if (rand(1,2) == 1) 
+	{
+		$msg = null;
+	}
 }
+
+
+
 
 
 
