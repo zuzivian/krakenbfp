@@ -35,7 +35,7 @@ try {
     }
     else if ($words[0] == '/help' || $words[0] == '/add@bfpbot')
     {
-		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
+		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands";
     }
     else if (rand(1,100) <= 20) 
     {
