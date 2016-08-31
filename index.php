@@ -119,6 +119,8 @@ function spew_reply($keyword)
             return "stop laughing bitch";
         case "hesus":
             return "can't save your black soul";
+        case "U+1F609":
+            return "wink wonk to you too";
 		default:
 			return null;
 	}	
