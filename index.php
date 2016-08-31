@@ -28,65 +28,42 @@ function spew_nonsense()
 
     switch($r) 
     {
-		case 1: {
-        	return "Grandpa nyat is watching";
-            break;
-            }
-        case 2: {
+		case 1:
+			return "Grandpa nyat is watching";
+		case 2:
 			return "holy bukkake over the whole school population";
-			break; }
-		case 3: {
+		case 3:
 			return "ALANJIAO!!!";
-			break; }
-		case 4: {
+		case 4:
 			return "Y'all are damn r99d";
-			break; }
-		case 5: {
+		case 5:
 			return "Jin pls";
-			break; }
-		case 6: {
-			return "MAMA SAVE MEEEEEEE";
-			break; }		
-		case 7: {
+		case 6:
+			return "MAMA SAVE MEEEEEEE";		
+		case 7:
 			return "u are one of my 30 boiz ;)";
-			break; }
-		case 8: {
+		case 8:
 			return "Guys I hate gedong :((";
-			break; }
-		case 9: {
+		case 9:
 			return "*rubs head in anticlockwise motion with right hand*";
-			break; }
-        case 10:{
+        case 10:
             return "Ken you not?";
-            break; }
-        case 11:{
+        case 11:
             return "NATHANIEL FRICKIN WONG";
-            break; }
-        case 12:{
+        case 12:
             return "JONATHAN FUCKING ONG";
-            break; }
-        case 13:{
+        case 13:
             return "What's the problem now?";
-            break; }
-        case 14:{
+        case 14:
             return "BEE varee aTAI";
-            break; }
-        case 15:{
+        case 15:
             return "JONATHAN FREAKING ONG";
-            break; }
-        case 16:{
+        case 16:
             return "大男人主意";
-            break; }
-        case 17:{
+        case 17:
             return "overcompensation for small dick";
-            break; }
-        case 18:{
-            return "3 rights make a left";
-            break; }
-		default: {
-			return "";	
-			break;
-			}										
+        case 18:
+            return "3 rights make a left";									
 	}
 }
 
