@@ -70,7 +70,7 @@ function spew_nonsense()
 // Takes incoming message and breaks it down into an array of strings, one word per string
 // Usage: '$words[0]' means the first word in the message
 $words = explode(" ", $update->message->text);
-$words[0] = $cmd;
+$cmd = $words[0];
 
 // The Bot now decides, based on the ruleset, on an appropriate response, or to keep quiet.
 
