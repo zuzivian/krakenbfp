@@ -41,16 +41,18 @@ try {
     {
 		$msg = "Grandpa nyat is watching";
     }
-    else 
+    else
     {
-    	$msg = "Yo";
+    //do nothing
     }
     
-	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-	$response = $client->sendMessage([
-      	'chat_id' => $update->message->chat->id,
-		'text' => $msg
- 	]);
+	if ($msg) {
+		$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
+		$response = $client->sendMessage([
+      		'chat_id' => $update->message->chat->id,
+			'text' => $msg
+ 		]);
+ 	}
     
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
