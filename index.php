@@ -39,7 +39,7 @@ try {
     }
     else if (rand(1,100) <= 20) 
     {
-		$msg = "Grandpa nyat is watching";
+		$msg = "Grandpa nyat is watching.";
     }
     else
     {
