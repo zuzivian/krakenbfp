@@ -115,6 +115,10 @@ function spew_reply($keyword)
             return "What's the problem now?";
         case "sex":
             return "SURPRISE BUTTSECKS";
+        case "hahaha":
+            return "stop laughing bitch";
+        case "hesus":
+            return "can't save your black soul";
 		default:
 			return null;
 	}	
