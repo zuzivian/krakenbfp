@@ -23,7 +23,7 @@ $update = json_decode(file_get_contents('php://input'));
 // Spews any one of the available random messages.
 function spew_nonsense()
 {
-	$r = rand(1,8);
+	$r = rand(1,9);
     switch($r) 
     {
 		case 1: {
