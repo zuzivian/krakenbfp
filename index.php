@@ -24,7 +24,7 @@ $update = json_decode(file_get_contents('php://input'));
 function spew_nonsense()
 {
 
-	$r = rand(1,18);
+	$r = rand(1,19);
 
     switch($r) 
     {
@@ -35,7 +35,7 @@ function spew_nonsense()
 		case 3:
 			return "ALANJIAO!!!";
 		case 4:
-			return "Y'all are damn r99d";
+			return "Y'all are so damn r99d";
 		case 5:
 			return "Jin pls";
 		case 6:
@@ -63,7 +63,9 @@ function spew_nonsense()
         case 17:
             return "overcompensation for small dick";
         case 18:
-            return "3 rights make a left";									
+            return "3 rights make a left";
+        case 19:
+        	return "Send help plz";									
 	}
 }
 
