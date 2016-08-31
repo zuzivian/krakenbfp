@@ -90,7 +90,7 @@ function spew_reply($keyword)
 		case "sigh":
 			return "Sigh I'm jaded too..";
 		case "jesus":
-			return "What kind of car does Jesus drive? A Christler.";
+			return "What kind of car does Jesus drive? \n\nA Christler.";
 		case "whee":
 			return "did you just go down a slide or what";
 		case "ass":
@@ -98,7 +98,11 @@ function spew_reply($keyword)
 		case "jin":
 			return "Jin wants meat and balls";
 		case "bts"
-			return "You smell that? It's trash!";
+			return "You smell that? It's trash!\nYou trash too.";
+		case "guys"
+			return "Wat";
+		case "crap"
+			return "What do you call having nowhere else to shit? \n\nCraptivity.";
 		default:
 			return null;
 	}	
