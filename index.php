@@ -69,6 +69,9 @@ function spew_nonsense()
         case 14:{
             return "BEE varee aTAI";
             break; }
+        case 15:{
+            return "3 rights make a left";
+            break; }
 		default: {
 			return "";	
 			break;
