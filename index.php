@@ -38,22 +38,17 @@ try {
     {
 		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
     }
-    else if (rand(1,100) <= 20){
+    else if (rand(1,100) <= 20) {
 		$msg = "Grandpa nyat is watching";
     }
     
     
-    
-    
-    
-    
-    if ($msg) {
+    if ($msg != null) {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
       	 	'chat_id' => $update->message->chat->id,
     		'text' => $msg
  		]);
- 		
  	}
     
 
