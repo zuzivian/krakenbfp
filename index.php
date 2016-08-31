@@ -21,39 +21,40 @@ $update = json_decode(file_get_contents('php://input'));
 
 
 // Spews any one of the available random messages.
-function spew_nonsense() 
+function spew_nonsense()
 {
-	$r = rand(1,9);
+	$r = rand(1,8);
     switch($r) 
     {
-		case 1:
-        	$msg = "Grandpa nyat is watching";
+		case 1: {
+        	return "Grandpa nyat is watching";
             break;
-        case 2:
-			$msg = "bukkake over the whole school population";
+            }
+        case 2: {
+			return "bukkake over the whole school population";
+			break; }
+		case 3: {
+			return "ALANJIAO!!!";
+			break; }
+		case 4: {
+			return"Y'all are damn r99d";
+			break; }
+		case 5: {
+			return "Jin pls";
+			break; }
+		case 6: {
+			return "MAMA SAVE MEEEEEEE";
+			break; }		
+		case 7: {
+			return "u are one of my 30 boiss";
+			break; }
+		case 8: {
+			return "Guys I hate gedong :((";
+			break; }
+		default: {
+			return "";	
 			break;
-		case 3:
-			$msg = "ALANJIAO!!!";
-			break;
-		case 4:
-			$msg = "Y'all are damn r99d";
-			break;
-		case 5:
-			$msg = "Jin pls";
-			break;
-		case 6:
-			$msg = "MAMA SAVE MEEEEEEE";
-			break;		
-		case 7:
-			$msg = "u are one of my 30 boiss";
-			break;
-		case 8:
-			$msg = "Guys I hate gedong :((";
-			break;
-		case 9:
-			$msg = "I'm gay and I take bio";
-			break;
-		default:											
+			}										
 	}
 }
 
@@ -95,7 +96,7 @@ else if ($cmd == '/help' || $cmd == '/help@bfpbot')
 else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
 {
 	// Spew nonsense.
-	spew_nonsense();
+	$msg = spew_nonsense();
 }
 
 else    
@@ -104,7 +105,7 @@ else
 	$randnum = rand(1,100);
 	if ($randnum == 1) 
 	{
-		spew_nonsense();
+		$msg = spew_nonsense();
 	}
 }
 
