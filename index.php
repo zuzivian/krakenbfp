@@ -53,7 +53,7 @@ function spew_nonsense()
         case 12:
             return "JONATHAN FUCKING ONG";
         case 13:
-            return "What's the problem now?";
+            return "y u frontin";
         case 14:
             return "BEE varee aTAI";
         case 15:
@@ -83,7 +83,7 @@ function spew_reply($keyword)
 			return "Did you know that 'jin' and 'celibate' are antonyms?";
 		case "dick":
 			return "oooh dickiesssss";
-		case "fuken":
+		case "fucken":
 			return "fucken kraken fucken kraken";
 		case "dumbshit":
 			return "My shit has an IQ of 160. That's better than Einstein pls.";
@@ -100,13 +100,21 @@ function spew_reply($keyword)
 		case "jin":
 			return "Jin wants meat and balls";
 		case "bts":
-			return "You smell that? It's trash!\nYou trash too.";
+			return "You smell that? It's trash!\n\nYou trash too.";
 		case "guys":
 			return "Wat";
 		case "crap":
 			return "What do you call having nowhere else to shit? \n\nCraptivity.";
 		case "butt":
 			return "Luv that buttkrak(en)";
+        case "wonk":
+            return "why u so damn thirsty";
+        case "fronting":
+            return "you're only seventeen only got a few dollars";
+        case "help":
+            return "What's the problem now?";
+        case "butt":
+            return "SURPRISE BUTTSECKS";
 		default:
 			return null;
 	}	
