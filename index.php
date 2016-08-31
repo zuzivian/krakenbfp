@@ -105,7 +105,7 @@ else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot')
 else    
 {
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	$randnum = rand(1,100);
+	$randnum = rand(1,50);
 	if ($randnum == 1) 
 	{
 		$msg = spew_nonsense();
