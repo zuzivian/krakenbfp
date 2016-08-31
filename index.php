@@ -78,9 +78,13 @@ function spew_reply($keyword)
 		case "shit":
 			return "I smell some of that shit coming from over yonder.";
 		case "celibate":
-			return "THAT'S NOT JIN";
+			return "Did you know that 'jin' and 'celibate' are antonyms?";
 		case "dick":
 			return "oooh dickiesssss";
+		case "fuken":
+			return "fucken kraken fucken kraken";
+		case "dumbshit":
+			return "My shit has an IQ of 160. That's better than Einstein!";
 		default:
 			return null;
 	}	
