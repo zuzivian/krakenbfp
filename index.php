@@ -113,7 +113,7 @@ function spew_reply($keyword)
             return "you're only seventeen only got a few dollars";
         case "help":
             return "What's the problem now?";
-        case "butt":
+        case "sex":
             return "SURPRISE BUTTSECKS";
 		default:
 			return null;
