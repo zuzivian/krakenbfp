@@ -20,45 +20,30 @@
 require 'vendor/autoload.php';
 
 $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set your access token
-$url = ''; // URL RSS feed
 $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
-
-    if($update->message->text == '/email')
+	
+	// message processing
+	$text = $update->message->text;
+	$words = explode(" ", $text);
+	
+    if($words[0] == '/add')
     {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
         	'chat_id' => $update->message->chat->id,
-        	'text' => "You can send email to : Kasra@madadipouya.com"
+        	'text' => "Currently broken. Sorry folks."
      	]);
     }
-    else if($update->message->text == '/help')
+    else if($words[0] == '/help')
     {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
     		'chat_id' => $update->message->chat->id,
-    		'text' => "List of commands :\n /add -> adds to Kraken's existing repertoire  
-    		/help -> Shows list of available commands"
+    		'text' => "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
     		]);
-
-    }
-    else if($update->message->text == '/latest')
-    {
-    		Feed::$cacheDir 	= __DIR__ . '/cache';
-			Feed::$cacheExpire 	= '5 hours';
-			$rss 		= Feed::loadRss($url);
-			$items 		= $rss->item;
-			$lastitem 	= $items[0];
-			$lastlink 	= $lastitem->link;
-			$lasttitle 	= $lastitem->title;
-			$message = $lasttitle . " \n ". $lastlink;
-			$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-			$response = $client->sendMessage([
-					'chat_id' => $update->message->chat->id,
-					'text' => $message
-				]);
 
     }
     else
