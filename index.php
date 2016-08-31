@@ -23,7 +23,7 @@ $update = json_decode(file_get_contents('php://input'));
 // Spews any one of the available random messages.
 function spew_nonsense()
 {
-	$r = rand(1,14);
+	$r = rand(1,17);
     switch($r) 
     {
 		case 1: {
@@ -68,6 +68,15 @@ function spew_nonsense()
             break; }
         case 14:{
             return "BEE varee aTAI";
+            break; }
+        case 15:{
+            return "JONATHAN FREAKING ONG";
+            break; }
+        case 16:{
+            return "大男人主意";
+            break; }
+        case 17:{
+            return "overcompensation for small dick";
             break; }
 		default: {
 			return "";	
