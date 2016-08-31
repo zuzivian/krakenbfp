@@ -23,7 +23,7 @@ $update = json_decode(file_get_contents('php://input'));
 // Spews any one of the available random messages.
 function spew_nonsense()
 {
-	$r = rand(1,9);
+	$r = rand(1,14);
     switch($r) 
     {
 		case 1: {
@@ -31,7 +31,7 @@ function spew_nonsense()
             break;
             }
         case 2: {
-			return "bukkake over the whole school population";
+			return "holy bukkake over the whole school population";
 			break; }
 		case 3: {
 			return "ALANJIAO!!!";
@@ -54,6 +54,21 @@ function spew_nonsense()
 		case 9: {
 			return "*rubs head in anticlockwise motion with right hand*";
 			break; }
+        case 10:{
+            return "Ken you not?";
+            break; }
+        case 11:{
+            return "NATHANIEL FRICKIN WONG";
+            break; }
+        case 12:{
+            return "JONATHAN FUCKING ONG";
+            break; }
+        case 13:{
+            return "What's the problem now?";
+            break; }
+        case 14:{
+            return "BEE varee aTAI";
+            break; }
 		default: {
 			return "";	
 			break;
