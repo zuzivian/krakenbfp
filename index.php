@@ -33,25 +33,25 @@ function spew_nonsense()
 			$msg = "bukkake over the whole school population";
 			break;
 		case 3:
-			$msg = "ALANJIAO!!!"
+			$msg = "ALANJIAO!!!";
 			break;
 		case 4:
-			$msg = "Y'all are damn r99d"
+			$msg = "Y'all are damn r99d";
 			break;
 		case 5:
-			$msg = "Jin pls"
+			$msg = "Jin pls";
 			break;
 		case 6:
-			$msg = "MAMA SAVE MEEEEEEE"
+			$msg = "MAMA SAVE MEEEEEEE";
 			break;		
 		case 7:
-			$msg = "u are one of my 30 boiss"
+			$msg = "u are one of my 30 boiss";
 			break;
 		case 8:
-			$msg = "Guys I hate gedong :(("
+			$msg = "Guys I hate gedong :((";
 			break;
 		case 9:
-			$msg = "I'm gay and I take bio"
+			$msg = "I'm gay and I take bio";
 			break;												
 	}
 }
@@ -88,8 +88,7 @@ if ($cmd == '/add' || $cmd == '/add@bfpbot')
 else if ($cmd == '/help' || $cmd == '/help@bfpbot') 
 {
 	// Sends a help message
-	$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands
-	\n /nonsense - encourages the Kraken to spew some nonsense ";
+	$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands \n /nonsense - encourages the Kraken to spew some nonsense ";
 }
 
 else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
@@ -101,7 +100,7 @@ else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot')
 else    
 {
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	$randnum = rand(1,100)
+	$randnum = rand(1,100);
 	if ($randnum == 1) 
 	{
 		spew_nonsense;
