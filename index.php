@@ -97,11 +97,11 @@ function spew_reply($keyword)
 			return "I love donkeys too.";
 		case "jin":
 			return "Jin wants meat and balls";
-		case "bts"
+		case "bts":
 			return "You smell that? It's trash!\nYou trash too.";
-		case "guys"
+		case "guys":
 			return "Wat";
-		case "crap"
+		case "crap":
 			return "What do you call having nowhere else to shit? \n\nCraptivity.";
 		default:
 			return null;
