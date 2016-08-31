@@ -46,7 +46,7 @@ function spew_nonsense()
 			return "MAMA SAVE MEEEEEEE";
 			break; }		
 		case 7: {
-			return "u are one of my 30 boiss";
+			return "u are one of my 30 boiz ;)";
 			break; }
 		case 8: {
 			return "Guys I hate gedong :((";
