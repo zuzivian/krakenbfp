@@ -29,31 +29,33 @@ try {
 	$text = $update->message->text;
 	$words = explode(" ", $text);
 	
-    if($words[0] == '/add')
+	
+    if ($words[0] == '/add' || $words[0] == '/add@bfpbot')
     {
+		$msg = "Feature unavailable. Sorry folks.";
+    }
+    else if ($words[0] == '/help' || $words[0] == '/add@bfpbot')
+    {
+		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
+    }
+    else if (rand(1,100) <= 20){
+		$msg = "Grandpa nyat is watching";
+    }
+    
+    
+    
+    
+    
+    
+    if ($msg) {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendMessage([
-        	'chat_id' => $update->message->chat->id,
-        	'text' => "Currently broken. Sorry folks.."
-     	]);
-    }
-    else if($words[0] == '/help')
-    {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
-    		'chat_id' => $update->message->chat->id,
-    		'text' => "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands"
-    		]);
-
-    }
-    else
-    {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
-    		'chat_id' => $update->message->chat->id,
-    		'text' => "Invalid command, please use /help to get list of available commands"
-    		]);
-    }
+      	 	'chat_id' => $update->message->chat->id,
+    		'text' => $msg
+ 		]);
+ 		
+ 	}
+    
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
 
