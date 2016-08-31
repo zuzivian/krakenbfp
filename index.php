@@ -84,7 +84,9 @@ function spew_reply($keyword)
 		case "fuken":
 			return "fucken kraken fucken kraken";
 		case "dumbshit":
-			return "My shit has an IQ of 160. That's better than Einstein!";
+			return "My shit has an IQ of 160. That's better than Einstein pls.";
+		case "kraken":
+			return "You kraken me up, dipshit."
 		default:
 			return null;
 	}	
