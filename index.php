@@ -103,6 +103,8 @@ function spew_reply($keyword)
 			return "Wat";
 		case "crap":
 			return "What do you call having nowhere else to shit? \n\nCraptivity.";
+		case "butt":
+			return "Luv that buttkrak(en)";
 		default:
 			return null;
 	}	
