@@ -95,6 +95,10 @@ function spew_reply($keyword)
 			return "did you just go down a slide or what";
 		case "ass":
 			return "I love donkeys too.";
+		case "jin":
+			return "Jin wants meat and balls";
+		case "bts"
+			return "You smell that? It's trash!";
 		default:
 			return null;
 	}	
@@ -133,7 +137,7 @@ if ($cmd == '/add' || $cmd == '/add@bfpbot')
 else if ($cmd == '/help' || $cmd == '/help@bfpbot') 
 {
 	// Sends a help message
-	$msg = "List of commands :\n /add - adds to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages the Kraken to spew some nonsense ";
+	$msg = "List of commands :\n /add - adds to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages Kraken to spew nonsense ";
 }
 
 else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
