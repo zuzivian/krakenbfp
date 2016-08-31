@@ -37,13 +37,17 @@ try {
     {
 		$msg = "List of commands :\n /add -> adds to Kraken's existing repertoire  \n /help -> Shows list of available commands";
     }
-    else if (rand(1,100) <= 20) 
+    else 
     {
-		$msg = "Grandpa nyat is watching.";
-    }
-    else
-    {
-    //do nothing
+	     $randnum = rand(1,300);
+         switch($randnum) {
+           case 1:
+               $msg = "Grandpa nyat is watching.";
+               break;
+           case 2:
+               $msg = "bukkake over the whole school population";
+               break;
+         }
     }
     
 	if ($msg) {
