@@ -87,6 +87,14 @@ function spew_reply($keyword)
 			return "My shit has an IQ of 160. That's better than Einstein pls.";
 		case "kraken":
 			return "You kraken me up, dipshit.";
+		case "sigh":
+			return "Sigh I'm jaded too..";
+		case "jesus":
+			return "What kind of car does Jesus drive? A Christler.";
+		case "whee":
+			return "did you just go down a slide or what";
+		case "ass":
+			return "I love donkeys too.";
 		default:
 			return null;
 	}	
