@@ -6,12 +6,12 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-echo "hi2";
+echo "hi3";
 
-// $conn = new mysqli($server, $username, $password, $db);
+$conn = new mysqli($server, $username, $password, $db);
 
 // $sql = "SELECT response FROM kraken_msg LIMIT 1";
-// if ($result = $mysqli->query($sql)) {
+// if ($result = $conn->query($sql)) {
 // 	$msg = $result->fetch_assoc();
 // }
 // 
