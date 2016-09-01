@@ -80,11 +80,12 @@ else
 	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $words[$i] . "' ORDER BY RAND() LIMIT 1";
       if (list($msg) = db_query($conn, $sql)) 
 		{
+          $msg = "meh";
 			break;
 		}
 	}
 
-	if (!$msg && rand(1,10) == 1) 
+	if (!$msg && rand(1,15) == 1) 
 	{
 		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $update->message->from->username);
 	}
