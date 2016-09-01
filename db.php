@@ -6,7 +6,8 @@
 // $password = $url["pass"];
 // $db = substr($url["path"], 1);
 
-echo "hi";
+echo "hi2";
+print_r $url;
 
 // $conn = new mysqli($server, $username, $password, $db);
 
