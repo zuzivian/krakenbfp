@@ -7,6 +7,7 @@ KRAKEN: A BFP BOT
 */
 
 // DO NOT EDIT
+time_pre = microtime(true);
 require 'vendor/autoload.php';
 
 $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set your access token
@@ -214,7 +215,16 @@ if ($msg) {
  	]);
  }
     
+    
+
+// Display something on the webpage
+
+
+$time_post = microtime(true);
+$exec_time = $time_post - $time_pre; 
+echo "exec_time . "ms";
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
 // -------------------------
+
