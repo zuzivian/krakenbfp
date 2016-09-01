@@ -30,6 +30,8 @@ function select_user_msg($conn, $username)
 	return $row['response'];
 }
 
+/*  for now commented
+ 
 function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
 	
 	$sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) 
@@ -44,6 +46,9 @@ function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
 }
 
 print_r add_msg($conn, 'hihi says mysql', 'huayyi');
+
+*/
+
 
 // 
 // function select_random_msg($conn) 
