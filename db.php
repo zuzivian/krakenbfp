@@ -1,13 +1,15 @@
 <?php
 
-require_once 'vendor/simple-mysqli/class.db.php';
 
 define( 'DB_HOST', 'sql3.freemysqlhosting.net' ); // set database host
 define( 'DB_USER', 'sql3133872' ); // set database user
 define( 'DB_PASS', 'bfnqrRuN6h' ); // set database password
 define( 'DB_NAME', 'sql3133872' ); // set database name
 define( 'SEND_ERRORS_TO', 'error@kraken.com' ); //set email notification email address
-define( 'DISPLAY_DEBUG', true ); //display db errors?
+define( 'DISPLAY_DEBUG', true ); // display db errors?
+
+
+require_once 'simple-mysqli/class.db.php';
 
 
 //Initiate the class
@@ -35,7 +37,7 @@ if( $database->num_rows( $query ) > 0 )
 
 // Gets one random message from the entire table
 function select_random_msg() {
-	$query = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
+	$query = "SELECT response FROM kraken_msg LIMIT 1";
 	if($database->num_rows( $query ) > 0)
 	{
     	list($msg) = $database->get_row($query);
@@ -48,6 +50,6 @@ function select_random_msg() {
 	
 }
 
-echo select_random_msg;
+print_r select_random_msg;
 
 ?>
