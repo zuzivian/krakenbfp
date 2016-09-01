@@ -31,7 +31,7 @@ function select_user_msg($conn, $username)
 }
 
 echo select_random_msg($conn);
-echo select_random_msg($conn, 'huayyi');
+echo select_user_msg($conn, 'huayyi');
 
 
 // 
