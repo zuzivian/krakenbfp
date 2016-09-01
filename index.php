@@ -180,7 +180,7 @@ else
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	if (!$msg && rand(1,20) == 1) 
+	if (!$msg && rand(1,30) == 1) 
 	{
 		$msg = spew_nonsense();
 	}
