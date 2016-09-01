@@ -30,10 +30,10 @@ function select_user_msg($conn, $username)
 	return $row['response'];
 }
 
-function add_msg($conn, $msg, $user_submit, $user_attrib=null, $phrase=null) {
+function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
 	
 	$sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) 
-		VALUES (" . $msg . ", " . $phrase . ", " . $user_ifsubmit . ", " . $user_attrib . ")";
+		VALUES ('" . $msg . "', '" . $phrase . "', '" . $user_submit . "', '" . $user_attrib . "')";
 	return db_query($conn, $sql);
 }
 
