@@ -224,25 +224,23 @@ if ($msg) {
 
 // Display something on the webpage
 
-//echo "<html>";
 $time_post = microtime(true);
 $exec_time = $time_post - $time_pre; 
 echo $exec_time*1000 . " ms";
 echo "\n\n";
 echo spew_nonsense();
-//echo "</html>";
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
 // -------------------------
 
 try {
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-	$server = $url["host"];
-	$username = $url["user"];
-	$password = $url["pass"];
-	$db = substr($url["path"], 1);
+// 	$server = $url["host"];
+// 	$username = $url["user"];
+// 	$password = $url["pass"];
+// 	$db = substr($url["path"], 1);
 
 //	$conn = new mysqli($server, $username, $password, $db);
 
