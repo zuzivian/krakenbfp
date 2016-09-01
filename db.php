@@ -14,12 +14,10 @@ function select_random_msg()
 	if ($result = $conn->query($sql)) {
 		$row = $result->fetch_assoc();
 	}
-	return $row['response'];
+	echo $row['response'];
 }
 
-$msg = select_random_msg();
-
-echo $msg;
+select_random_msg();
 
 // function select_random_msg() {
 // 	$query = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
