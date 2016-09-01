@@ -9,7 +9,6 @@ KRAKEN: A BFP BOT
 // DO NOT EDIT
 $time_pre = microtime(true);
 require 'vendor/autoload.php';
-require 'db.php';
 
 $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set your access token
 $update = json_decode(file_get_contents('php://input'));
@@ -26,53 +25,52 @@ $update = json_decode(file_get_contents('php://input'));
 function spew_nonsense()
 {
 
-// 	$r = rand(1,21);
-// 
-//     switch($r) 
-//     {
-// 		case 1:
-// 			return "Grandpa nyat is watching";
-// 		case 2:
-// 			return "holy bukkake over the whole school population";
-// 		case 3:
-// 			return "ALANJIAO!!!";
-// 		case 4:
-// 			return "Y'all are so damn r99d";
-// 		case 5:
-// 			return "Jin pls";
-// 		case 6:
-// 			return "MAMA SAVE MEEEEEEE";		
-// 		case 7:
-// 			return "u are one of my 30 boiz ;)";
-// 		case 8:
-// 			return "Guys I hate gedong :((";
-// 		case 9:
-// 			return "*rubs head in anticlockwise motion with right hand*";
-//         case 10:
-//             return "Ken you not?";
-//         case 11:
-//             return "NATHANIEL FRICKIN WONG";
-//         case 12:
-//             return "JONATHAN FUCKING ONG";
-//         case 13:
-//             return "y u frontin";
-//         case 14:
-//             return "BEE varee aTAI";
-//         case 15:
-//             return "JONATHAN FREAKING ONG";
-//         case 16:
-//             return "大男人主意";
-//         case 17:
-//             return "overcompensation for small dick";
-//         case 18:
-//             return "3 rights make a left";
-//         case 19:
-//         	return "Send help plz";
-//         case 20: 
-//         	return "GAN CHI BAI"; 
-//         case 21: 
-//         	return "\xF0\x9F\x8C\x9A";	
-	return select_random_msg();
+	$r = rand(1,21);
+
+    switch($r) 
+    {
+		case 1:
+			return "Grandpa nyat is watching";
+		case 2:
+			return "holy bukkake over the whole school population";
+		case 3:
+			return "ALANJIAO!!!";
+		case 4:
+			return "Y'all are so damn r99d";
+		case 5:
+			return "Jin pls";
+		case 6:
+			return "MAMA SAVE MEEEEEEE";		
+		case 7:
+			return "u are one of my 30 boiz ;)";
+		case 8:
+			return "Guys I hate gedong :((";
+		case 9:
+			return "*rubs head in anticlockwise motion with right hand*";
+        case 10:
+            return "Ken you not?";
+        case 11:
+            return "NATHANIEL FRICKIN WONG";
+        case 12:
+            return "JONATHAN FUCKING ONG";
+        case 13:
+            return "y u frontin";
+        case 14:
+            return "BEE varee aTAI";
+        case 15:
+            return "JONATHAN FREAKING ONG";
+        case 16:
+            return "大男人主意";
+        case 17:
+            return "overcompensation for small dick";
+        case 18:
+            return "3 rights make a left";
+        case 19:
+        	return "Send help plz";
+        case 20: 
+        	return "GAN CHI BAI"; 
+        case 21: 
+        	return "\xF0\x9F\x8C\x9A";	
 									
 	}
 }

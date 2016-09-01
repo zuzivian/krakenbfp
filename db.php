@@ -9,8 +9,7 @@ define( 'DB_NAME', substr($dburl["path"], 1) ); // set database name
 define( 'SEND_ERRORS_TO', 'error@kraken.com' ); //set email notification email address
 define( 'DISPLAY_DEBUG', true ); // display db errors?
 
-
-require_once 'simple-mysqli/class.db.php';
+require 'simple-mysqli/class.db.php';
 
 
 //Initiate the class
