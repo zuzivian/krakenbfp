@@ -34,7 +34,13 @@ function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
 	
 	$sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) 
 		VALUES ('" . $msg . "', '" . $phrase . "', '" . $user_submit . "', '" . $user_attrib . "')";
-	return db_query($conn, $sql);
+	if ($conn->query($sql) === TRUE) 
+	{
+		return true;
+	} else 
+	{
+		return false;
+	}
 }
 
 print_r add_msg($conn, 'hihi says mysql', 'huayyi');
