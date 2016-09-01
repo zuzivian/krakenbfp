@@ -222,7 +222,7 @@ if ($msg) {
 
 $time_post = microtime(true);
 $exec_time = $time_post - $time_pre; 
-echo $exec_time . " ms";
+echo $exec_time*1000 . " ms";
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
