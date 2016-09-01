@@ -1,10 +1,11 @@
 <?php
 
+$dburl = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-define( 'DB_HOST', 'sql3.freemysqlhosting.net:3306' ); // set database host
-define( 'DB_USER', 'sql3133872' ); // set database user
-define( 'DB_PASS', 'bfnqrRuN6h' ); // set database password
-define( 'DB_NAME', 'sql3133872' ); // set database name
+define( 'DB_HOST', $dburl["host"] ); // set database host
+define( 'DB_USER', $dburl["user"] ); // set database user
+define( 'DB_PASS', $dburl["pass"] ); // set database password
+define( 'DB_NAME', substr($dburl["path"], 1) ); // set database name
 define( 'SEND_ERRORS_TO', 'error@kraken.com' ); //set email notification email address
 define( 'DISPLAY_DEBUG', true ); // display db errors?
 
