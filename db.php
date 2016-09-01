@@ -23,7 +23,16 @@ function select_random_msg($conn)
 	return $row['response'];
 }
 
+function select_user_msg($conn, $username)
+{
+	$sql = "SELECT response FROM kraken_msg WHERE user_attrib = '" . $username . "' ORDER BY RAND() LIMIT 1";
+	$row = db_query($conn, $sql);
+	return $row['response'];
+}
+
 echo select_random_msg($conn);
+echo select_random_msg($conn, 'huayyi');
+
 
 // 
 // function select_random_msg($conn) 
