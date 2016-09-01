@@ -187,6 +187,11 @@ else
 			break;
 		}
 	}
+
+	if (!$msg && rand(1,10) == 1) 
+	{
+		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $update->message->from->username);
+	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
 	if (!$msg && rand(1,50) == 1) 
@@ -231,7 +236,7 @@ $time_post = microtime(true);
 $exec_time = $time_post - $time_pre; 
 echo $exec_time*1000 . " ms";
 echo "\n\n";
-echo spew_nonsense();
+echo select_random_msg($conn);
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
