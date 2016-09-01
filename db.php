@@ -48,4 +48,6 @@ function select_random_msg() {
 	
 }
 
+echo select_random_msg;
+
 ?>
