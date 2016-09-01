@@ -22,118 +22,14 @@ $update = json_decode(file_get_contents('php://input'));
 // Beware when editing please.
 
 
-// Spews any one of the available random messages.
-function spew_nonsense()
-{
+// coming soon
 
-
-	$r = rand(1,21);
-
-    switch($r) 
-    {
-		case 1:
-			return "Grandpa nyat is watching";
-		case 2:
-			return "holy bukkake over the whole school population";
-		case 3:
-			return "ALANJIAO!!!";
-		case 4:
-			return "Y'all are so damn r99d";
-		case 5:
-			return "Jin pls";
-		case 6:
-			return "MAMA SAVE MEEEEEEE";		
-		case 7:
-			return "u are one of my 30 boiz ;)";
-		case 8:
-			return "Guys I hate gedong :((";
-		case 9:
-			return "*rubs head in anticlockwise motion with right hand*";
-        case 10:
-            return "Ken you not?";
-        case 11:
-            return "NATHANIEL FRICKIN WONG";
-        case 12:
-            return "JONATHAN FUCKING ONG";
-        case 13:
-            return "y u frontin";
-        case 14:
-            return "BEE varee aTAI";
-        case 15:
-            return "JONATHAN FREAKING ONG";
-        case 16:
-            return "大男人主意";
-        case 17:
-            return "overcompensation for small dick";
-        case 18:
-            return "3 rights make a left";
-        case 19:
-        	return "Send help plz";
-        case 20: 
-        	return "GAN CHI BAI"; 
-        case 21: 
-        	return "\xF0\x9F\x8C\x9A";	
-									
-	}
-}
-
-function spew_reply($keyword)
-{
-	$small_word = strtolower($keyword);
-	switch ($small_word) {
-		case "fak":
-			return "FAK NI BACK";
-		case "bij":
-			return "Yes that's you. Bij.";
-		case "shit":
-			return "I smell some of that shit coming from over yonder.";
-		case "celibate":
-			return "Did you know that 'jin' and 'celibate' are antonyms?";
-		case "dick":
-			return "oooh dickiesssss";
-		case "fucken":
-			return "fucken kraken fucken kraken";
-		case "dumbshit":
-			return "My shit has an IQ of 160. That's better than Einstein pls.";
-		case "kraken":
-			return "You kraken me up, dipshit.";
-		case "sigh":
-			return "Sigh I'm jaded too..";
-		case "jesus":
-			return "What kind of car does Jesus drive? \n\nA Christler.";
-		case "whee":
-			return "did you just go down a slide or what";
-		case "ass":
-			return "I love donkeys too.";
-		case "jin":
-			return "Jin wants meat and balls";
-		case "bts":
-			return "You smell that? It's trash!\n\nYou trash too.";
-		case "guys":
-			return "Wat";
-		case "crap":
-			return "What do you call having nowhere else to shit? \n\nCraptivity.";
-		case "butt":
-			return "Luv that buttkrak(en)";
-        case "wonk":
-            return "why u so damn thirsty";
-        case "fronting":
-            return "you're only seventeen only got a few dollars";
-        case "help":
-            return "What's the problem now?";
-        case "sex":
-            return "SURPRISE BUTTSECKS";
-        case "hahaha":
-            return "stop laughing bitch";
-        case "hesus":
-            return "can't save your black soul";
-        case "U+1F609":
-            return "wink wonk to you too";
-		default:
-			return null;
-	}	
-
-}
+// added so far:
+// $conn is a given instance of the SQL connection
+// gets the message's username $update->message->from->username
+// db_query($conn, $sql);
+// select_user_msg($conn, $update->message->from->username)
+// select_random_msg($conn);
 
 /* END FUNCTIONS */
 // -------------------------------------
@@ -179,9 +75,9 @@ else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot')
 else    
 {
 	// See if anything is worth a reply
-	foreach ($words as $check) 
+	for ($i = 0; $words[$i]; $i++) 
 	{
-	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $check . "' ORDER BY RAND() LIMIT 1";
+	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $words[$i] . "' ORDER BY RAND() LIMIT 1";
       if (list($msg) = db_query($conn, $sql)) 
 		{
 			break;
@@ -205,9 +101,6 @@ else
 		$msg = null;
 	}
 }
-
-
-
 
 
 
@@ -241,22 +134,6 @@ echo select_random_msg($conn);
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
 // -------------------------
-
-	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-// 	$server = $url["host"];
-// 	$username = $url["user"];
-// 	$password = $url["pass"];
-// 	$db = substr($url["path"], 1);
-
-//	$conn = new mysqli($server, $username, $password, $db);
-
-// 	$sql = "SELECT response FROM kraken_msg LIMIT 1";
-// 	if ($result = $mysqli->query($sql)) {
-// 		$msg = $result->fetch_assoc();
-// 	}
-// 
-// 	print_r $msg;
 
 
 ?>
