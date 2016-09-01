@@ -35,10 +35,10 @@ if( $database->num_rows( $query ) > 0 )
 
 // Gets one random message from the entire table
 function select_random_msg() {
-	$query = "SELECT response FROM table ORDER BY RAND() LIMIT 1";
+	$query = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
 	if($database->num_rows( $query ) > 0)
 	{
-    	$msg = $database->get_row($query);
+    	list($msg) = $database->get_row($query);
     	return $msg;
 	}	
 	else 
@@ -47,3 +47,5 @@ function select_random_msg() {
 	}
 	
 }
+
+?>
