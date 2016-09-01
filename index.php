@@ -246,12 +246,12 @@ try {
 
 	$conn = new mysqli($server, $username, $password, $db);
 
-	$sql = "SELECT response FROM kraken_msg LIMIT 1";
-	if ($result = $mysqli->query($sql)) {
-		$msg = $result->fetch_assoc();
-	}
-
-	print_r $msg;
+// 	$sql = "SELECT response FROM kraken_msg LIMIT 1";
+// 	if ($result = $mysqli->query($sql)) {
+// 		$msg = $result->fetch_assoc();
+// 	}
+// 
+// 	print_r $msg;
 } 
 catch 
 {
