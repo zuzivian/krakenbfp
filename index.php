@@ -66,7 +66,11 @@ function spew_nonsense()
         case 18:
             return "3 rights make a left";
         case 19:
-        	return "Send help plz";									
+        	return "Send help plz";
+        case 20: 
+        	return "GAN CHI BAI"; 
+        case 21: 
+        	return "\xF0\x9F\x8C\x9A";									
 	}
 }
 
