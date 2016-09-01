@@ -6,21 +6,36 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
+$conn = new mysqli($server, $username, $password, $db);
 
-
-function select_random_msg() 
+function db_query($conn) 
 {
-	$conn = new mysqli($server, $username, $password, $db);
-	$sql = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
 	if ($result = $conn->query($sql)) {
-		$row = $result->fetch_assoc();
+		$rows = $result->fetch_assoc();
 	}
+	return $rows;
+}
+
+function select_random_msg($conn) 
+{
+	$sql = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
+	$row = db_query($conn);
 	return $row['response'];
 }
 
 echo select_random_msg();
 
-
+// 
+// function select_random_msg($conn) 
+// {
+// 	$sql = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
+// 	if ($result = $conn->query($sql)) {
+// 		$row = $result->fetch_assoc();
+// 	}
+// 	return $row['response'];
+// }
+// 
+// echo select_random_msg();
 
 ?>
 
