@@ -78,9 +78,9 @@ else
 	for ($i = 0; $words[$i]; $i++) 
 	{
 	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $words[$i] . "' ORDER BY RAND() LIMIT 1";
-      if (list($msg) = db_query($conn, $sql)) 
+      if (list($dbmsg) = db_query($conn, $sql)) 
 		{
-          list($msg) = db_query($conn, $sql);
+          $msg = $dbmsg[0];
 			break;
 		}
 	}
