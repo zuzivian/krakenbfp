@@ -1,7 +1,7 @@
 <?php
 
 
-define( 'DB_HOST', 'sql3.freemysqlhosting.net' ); // set database host
+define( 'DB_HOST', 'sql3.freemysqlhosting.net:3306' ); // set database host
 define( 'DB_USER', 'sql3133872' ); // set database user
 define( 'DB_PASS', 'bfnqrRuN6h' ); // set database password
 define( 'DB_NAME', 'sql3133872' ); // set database name
@@ -50,6 +50,6 @@ function select_random_msg() {
 	
 }
 
-print_r select_random_msg;
+print_r $database->get_row("SELECT response FROM kraken_msg LIMIT 1");
 
 ?>
