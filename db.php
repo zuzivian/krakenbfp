@@ -12,10 +12,24 @@ $conn = new mysqli($server, $username, $password, $db);
 
 $sql = "SELECT response FROM kraken_msg LIMIT 1";
 if ($result = $conn->query($sql)) {
-	$msg = $result->fetch_assoc();
+	$row = $result->fetch_assoc();
 }
 
-print_r $msg;
+echo $row['response'];
+
+// function select_random_msg() {
+// 	$query = "SELECT response FROM kraken_msg LIMIT 1";
+// 	if($database->num_rows( $query ) > 0)
+// 	{
+//     	list($msg) = $database->get_row($query);
+//     	return $msg[];
+// 	}	
+// 	else 
+// 	{
+// 		return null;
+// 	}
+// 	
+// }
 
 ?>
 
