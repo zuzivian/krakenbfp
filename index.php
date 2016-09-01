@@ -25,7 +25,7 @@ $update = json_decode(file_get_contents('php://input'));
 function spew_nonsense()
 {
 
-	$r = rand(1,19);
+	$r = rand(1,21);
 
     switch($r) 
     {
