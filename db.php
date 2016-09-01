@@ -17,21 +17,14 @@ if ($result = $conn->query($sql)) {
 
 echo $row['response'];
 
-// function select_random_msg() {
-// 	$query = "SELECT response FROM kraken_msg LIMIT 1";
-// 	if($database->num_rows( $query ) > 0)
-// 	{
-//     	list($msg) = $database->get_row($query);
-//     	return $msg[];
-// 	}	
-// 	else 
-// 	{
-// 		return null;
-// 	}
-// 	
-// }
+function select_random_msg() {
+	$sql = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
+	if ($result = $conn->query($sql)) {
+		$row = $result->fetch_assoc();
+		return $row['response'];
+	}
+	else return null;
+}
+
 
 ?>
-
-
-
