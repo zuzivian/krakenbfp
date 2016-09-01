@@ -228,10 +228,20 @@ if ($msg) {
 $time_post = microtime(true);
 $exec_time = $time_post - $time_pre; 
 echo $exec_time*1000 . " ms";
-echo "\n\n" . spew_nonsense();
+echo "\n\n";
+echo spew_nonsense();
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
 // -------------------------
+
+
+try {
+
+include "db.php";
+
+
+}
+
 
 ?>

@@ -5,12 +5,11 @@ $dburl = parse_url(getenv("CLEARDB_DATABASE_URL"));
 define( 'DB_HOST', $dburl["host"] ); // set database host
 define( 'DB_USER', $dburl["user"] ); // set database user
 define( 'DB_PASS', $dburl["pass"] ); // set database password
-define( 'DB_NAME', substr($dburl["path"], 1) ); // set database name
+define( 'DB_NAME', 'heroku_0b78291926dec44' ); // set database name
 define( 'SEND_ERRORS_TO', 'error@kraken.com' ); //set email notification email address
-define( 'DISPLAY_DEBUG', true ); // display db errors?
+define( 'DISPLAY_DEBUG', false ); // display db errors?
 
 require 'simple-mysqli/class.db.php';
-
 
 //Initiate the class
 $database = new DB();
@@ -34,7 +33,6 @@ if( $database->num_rows( $query ) > 0 )
 */
 
 
-
 // Gets one random message from the entire table
 function select_random_msg() {
 	$query = "SELECT response FROM kraken_msg LIMIT 1";
@@ -50,6 +48,5 @@ function select_random_msg() {
 	
 }
 
-print_r $database->get_row("SELECT response FROM kraken_msg LIMIT 1");
+print_r ($database->get_row("SELECT response FROM kraken_msg LIMIT 1"));
 
-?>
