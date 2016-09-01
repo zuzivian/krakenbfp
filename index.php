@@ -234,7 +234,6 @@ echo spew_nonsense();
 // END OF SCRIPT. WOOHOO!
 // -------------------------
 
-try {
 	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 // 	$server = $url["host"];
@@ -250,12 +249,6 @@ try {
 // 	}
 // 
 // 	print_r $msg;
-} 
-catch 
-{
-	echo "failed"; 
-}
-
 
 
 ?>
