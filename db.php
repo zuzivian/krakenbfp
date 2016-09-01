@@ -9,7 +9,7 @@ define( 'DB_NAME', 'heroku_0b78291926dec44' ); // set database name
 define( 'SEND_ERRORS_TO', 'error@kraken.com' ); //set email notification email address
 define( 'DISPLAY_DEBUG', false ); // display db errors?
 
-require 'simple-mysqli/class.db.php';
+require 'simple-mysqli/sqldb.php';
 
 //Initiate the class
 $database = new DB();

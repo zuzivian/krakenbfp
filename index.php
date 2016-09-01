@@ -224,12 +224,13 @@ if ($msg) {
 
 // Display something on the webpage
 
-
+echo "<html>";
 $time_post = microtime(true);
 $exec_time = $time_post - $time_pre; 
 echo $exec_time*1000 . " ms";
 echo "\n\n";
 echo spew_nonsense();
+echo "</html>";
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
