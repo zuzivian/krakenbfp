@@ -8,7 +8,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-function db_query($conn) 
+function db_query($conn, $sql) 
 {
 	if ($result = $conn->query($sql)) {
 		$rows = $result->fetch_assoc();
@@ -19,7 +19,7 @@ function db_query($conn)
 function select_random_msg($conn) 
 {
 	$sql = "SELECT response FROM kraken_msg ORDER BY RAND() LIMIT 1";
-	$row = db_query($conn);
+	$row = db_query($conn, $sql);
 	return $row['response'];
 }
 
