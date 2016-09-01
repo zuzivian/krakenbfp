@@ -6,7 +6,6 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-echo "hi4";
 
 $conn = new mysqli($server, $username, $password, $db);
 
@@ -20,5 +19,6 @@ function select_random_msg() {
 	else return null;
 }
 
+echo select_random_msg();
 
 ?>
