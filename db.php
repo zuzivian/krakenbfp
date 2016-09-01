@@ -15,7 +15,7 @@ if ($result = $conn->query($sql)) {
 	$msg = $result->fetch_assoc();
 }
 
-// print_r $msg;
+print_r $msg;
 
 ?>
 
