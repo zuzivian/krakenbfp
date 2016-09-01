@@ -23,7 +23,7 @@ function select_random_msg($conn)
 	return $row['response'];
 }
 
-echo select_random_msg();
+echo select_random_msg($conn);
 
 // 
 // function select_random_msg($conn) 
