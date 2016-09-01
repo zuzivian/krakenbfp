@@ -8,7 +8,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-function db_query($conn, $sql) 
+function  db_query($conn, $sql)
 {
 	if ($result = $conn->query($sql)) {
 		$rows = $result->fetch_assoc();
@@ -49,7 +49,7 @@ print_r add_msg($conn, 'hihi says mysql', 'huayyi');
 
 */
 
-
+echo "db";
 // 
 // function select_random_msg($conn) 
 // {

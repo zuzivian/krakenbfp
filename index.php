@@ -9,7 +9,7 @@ KRAKEN: A BFP BOT
 // DO NOT EDIT
 $time_pre = microtime(true);
 require 'vendor/autoload.php';
-// require 'db.php';
+require 'db.php';
 
 $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set your access token
 $update = json_decode(file_get_contents('php://input'));
@@ -25,6 +25,7 @@ $update = json_decode(file_get_contents('php://input'));
 // Spews any one of the available random messages.
 function spew_nonsense()
 {
+
 
 	$r = rand(1,21);
 
@@ -172,24 +173,25 @@ else if ($cmd == '/help' || $cmd == '/help@bfpbot')
 else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
 {
 	// Spew nonsense.
-	$msg = spew_nonsense();
+	$msg = select_random_msg($conn);
 }
 
 else    
 {
 	// See if anything is worth a reply
-	for ($i = 0; $words[$i]; $i++) 
+	foreach ($words as $check) 
 	{
-		if ($msg = spew_reply($words[$i])) 
+	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $check . "' ORDER BY RAND() LIMIT 1";
+      if (list($msg) = db_query($conn, $sql)) 
 		{
 			break;
 		}
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	if (!$msg && rand(1,30) == 1) 
+	if (!$msg && rand(1,50) == 1) 
 	{
-		$msg = spew_nonsense();
+		$msg = select_random_msg($conn);
 	}
 	
 	// Gives Kraken some chill.
