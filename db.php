@@ -1,5 +1,5 @@
 <?php
- $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["host"];
 $username = $url["user"];
@@ -30,7 +30,7 @@ function select_user_msg($conn, $username)
 	return $row['response'];
 }
 
-
+// us-cdbr-iron-east-04.cleardb.net/
 
 ?>
 
