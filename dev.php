@@ -39,12 +39,14 @@ if (isset($_POST['user_submit']) && isset($_POST['msg'])) {
 		$phrase = '';
 	}
 	
-	if (add_msg($conn, $_POST['msg'], $_POST['user_submit'], $user_attrib, $phrase)) {
+	if (add_msg($conn, $_POST['msg'], $_POST['user_submit'], $user_attrib, $phrase)) 
+	{
 		echo "Congratulations. Your message has been submitted: <br>" . $_POST['msg'];
 	} 
 	else
 	{
-	echo "Error, your submission failed. Please try again.";
+		echo "Error, your submission failed. Please try again.";
+	}
 	
 }
 
