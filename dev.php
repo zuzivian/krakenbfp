@@ -17,7 +17,7 @@ function add_msg($conn, $msg, $user_submit, $user_attrib, $phrase) {
 	}
 }
 
-if (add_msg($conn, 'cray', 'tool_kit')) {
+if (add_msg($conn, 'cray', 'tool_kit', '', '')) {
 	echo "done!";
 } 
 else
