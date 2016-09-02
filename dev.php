@@ -3,7 +3,7 @@
 include 'db.php';
 
 
-function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
+function add_msg($conn, $msg, $user_submit, $user_attrib, $phrase) {
 	
 	// $sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) 
 	//	VALUES ('" . $msg . "', '" . $phrase . "', '" . $user_submit . "', '" . $user_attrib . "')";
@@ -17,7 +17,7 @@ function add_msg($conn, $msg, $user_submit, $user_attrib='', $phrase='') {
 	}
 }
 
-if (add_msg($conn, 'cray')) {
+if (add_msg($conn, 'cray', 'tool_kit')) {
 	echo "done!";
 } 
 else
