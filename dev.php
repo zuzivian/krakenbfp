@@ -42,17 +42,7 @@ function update_phrase($conn, $user_submit, $id, $phrase) {
 }
 
 
-// deletes an entire message.
-function delete_msg($conn, $user_submit, $id) {
-	
-	// check if the editor is the wrightful owner of the message.
-	if (find_user_submit($conn, $id) == $user_submit) {
-		// if so delete the row
-		$sql = "DELETE FROM kraken_msg WHERE id = $id";
-		return $conn->query($sql);
-	}
-	else return false; //fail
-}
+
 
 
 ?>

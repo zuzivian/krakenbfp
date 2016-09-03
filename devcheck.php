@@ -5,8 +5,7 @@ include 'dev.php';
 
 echo 'Testing delete_msg';
 echo '<br>';
-delete_msg($conn, 'zuzivian', 192);
-
+echo update_user_msg($conn, 'zuzivian', 182, 'hihi');
 
 
 ?>
