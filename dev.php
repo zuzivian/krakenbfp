@@ -1,65 +1,88 @@
-<html>
 <?php
 
 include 'db.php';
 
-
-function add_msg($conn, $msg, $user_submit, $user_attrib, $phrase) {
+// Finds the id of the given message. If there are duplicates, the id of the most recent entry is given.
+function find_id($conn, $msg) {
 	
-	// $sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) 
-	//	VALUES ('" . $msg . "', '" . $phrase . "', '" . $user_submit . "', '" . $user_attrib . "')";
-	$sql = "INSERT INTO kraken_msg (response, phrase, user_submit, user_attrib) VALUES ('$msg', '$phrase', '$user_submit', '$user_attrib')";
+	$sql = "SELECT id FROM kraken_msg WHERE response = '$msg' ORDER BY time DESC LIMIT 1";
+	if ($result = $conn->query($sql)) {
+		$rows = $result->fetch_assoc();
+	}
+	return $rows['id'];
+}
+
+
+// Gets the username of the submitter of a particular message
+function find_user_submit($conn, $id) {
+	
+	$sql = "SELECT user_submit FROM kraken_msg WHERE id = $id LIMIT 1";
+	if ($result = $conn->query($sql)) {
+		$row = $result->fetch_assoc();
+	}
+	return $row['user_submit'];
+}
+
+
+// Adds a new message (and submitting username) to the database, returning the id of the row if succesful.
+function add_msg($conn, $msg, $user_submit) {
+	
+	$sql = "INSERT INTO kraken_msg (response, user_submit) VALUES ('$msg', '$user_submit')";
 	if ($conn->query($sql) === TRUE) 
 	{
-		return true;
+		return find_id($conn, $msg);
 	} else 
 	{
 		return false;
 	}
 }
 
+function update_user_msg($conn, $user_submit, $id, $new_msg) {
+	
+	// check if the editor is the wrightful owner of the message.
+	if (find_user_submit($conn, $id) == $user_submit) {
+		// if so update the message
+		$sql = "UPDATE kraken_msg SET response = '$new_msg' WHERE id = $id";
+		return $conn->query($sql);
+	}
+	else return false; //fail
+}
 
-if (isset($_POST['user_submit']) && isset($_POST['msg'])) {
+
+function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 	
-	if (isset($_POST['user_attrib'])) 
-	{
-		$user_attrib = $_POST['user_submit'];
+	// check if the editor is the wrightful owner of the message.
+	if (find_user_submit($conn, $id) == $user_submit) {
+		// if so update the message
+		$sql = "UPDATE kraken_msg SET user_attrib = '$user_attrib' WHERE id = $id";
+		return $conn->query($sql);
 	}
-	else
-	{
-		$user_attrib = '';
-	}
+	else return false; //fail
+}
+
+function update_phrase($conn, $user_submit, $id, $phrase) {
 	
-	if (isset($_POST['phrase'])) 
-	{
-		$phrase = $_POST['phrase'];
+	// check if the editor is the wrightful owner of the message.
+	if (find_user_submit($conn, $id) == $user_submit) {
+		// if so update the message
+		$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
+		return $conn->query($sql);
 	}
-	else
-	{
-		$phrase = '';
-	}
+	else return false; //fail
+}
+
+function delete_msg($conn, $user_submit, $id) {
 	
-	if (add_msg($conn, $_POST['msg'], $_POST['user_submit'], $user_attrib, $phrase)) 
-	{
-		echo "Congratulations. Your message has been submitted: <br>" . $_POST['msg'];
-	} 
-	else
-	{
-		echo "Error, your submission failed. Please try again.";
+	// check if the editor is the wrightful owner of the message.
+	if (find_user_submit($conn, $id) == $user_submit) {
+		// if so update the message
+		$sql = "DELETE FROM kraken_msg WHERE id = $id";
+		return $conn->query($sql);
 	}
-	
+	else return false; //fail
+}
+
 }
 
 
 ?>
-
-
-<h3>Add to KRAKEN's dictionary</h3>
-<form action="dev.php" method="post">
-Your Telegram username: <input type="text" name="user_submit"><br>
-Enter a new KRAKEN response: <input type="text" name="msg"><br>
-Response should be used in reply to this word (optional): <input type="text" name="phrase"><br>
-Kraken should use this response on this Telegram username (optional): <input type="text" name="user_attrib"><br>
-<input type="submit">
-</form>
-</html>
