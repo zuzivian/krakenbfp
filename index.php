@@ -55,7 +55,8 @@ $user_submit = $update->message->from->username;
 // help - shows list of available commands
 // nonsense - encourages the Kraken to spew some nonsense 
 
-if ($update->message->chat->type == “private”) {
+if ($update->message->chat->type == “private”) 
+{
 	if (strpos($cmd, '/addmsg') == 0)
 	{
 		$msg = "Feature unavailable. Sorry folks.";
@@ -83,11 +84,15 @@ if ($update->message->chat->type == “private”) {
 
 }
 
-else if ( (strpos($cmd, '/addmsg') == 0) || (strpos($cmd, '/updatemsg') == 0) || (strpos($cmd, '/deletemsg') == 0) || (strpos($cmd, '/updatetrigger') == 0) || (strpos($cmd, '/updateattrib') == 0) )
+else if ( $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
 {
-	$msg = "Hey @$user_submit, you'll want to use that command in a private chat with me.";
+	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
 }
 
+else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
+{
+	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
+}
 
 else if (strpos($cmd, '/help') == 0) 
 {
