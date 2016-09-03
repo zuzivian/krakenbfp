@@ -3,20 +3,6 @@
 include 'db.php';
 
 
-// Adds a new message (and submitting username) to the database, returning the id of the row if succesful.
-function add_msg($conn, $msg, $user_submit) {
-	
-	$sql = "INSERT INTO kraken_msg (response, user_submit) VALUES ('$msg', '$user_submit')";
-	if ($conn->query($sql) === TRUE) 
-	{
-		return find_id($conn, $msg);
-	} 
-	else 
-	{
-		return false;
-	}
-}
-
 // Updates a user's message, given the id
 function update_user_msg($conn, $user_submit, $id, $new_msg) {
 	
@@ -61,7 +47,7 @@ function delete_msg($conn, $user_submit, $id) {
 	
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
-		// if so update the message
+		// if so delete the row
 		$sql = "DELETE FROM kraken_msg WHERE id = $id";
 		return $conn->query($sql);
 	}
