@@ -3,17 +3,6 @@
 include 'db.php';
 
 
-// Gets the username of the submitter of a particular message
-function find_user_submit($conn, $id) {
-	
-	$sql = "SELECT user_submit FROM kraken_msg WHERE id = $id LIMIT 1";
-	if ($result = $conn->query($sql)) {
-		$row = $result->fetch_assoc();
-	}
-	return $row['user_submit'];
-}
-
-
 // Adds a new message (and submitting username) to the database, returning the id of the row if succesful.
 function add_msg($conn, $msg, $user_submit) {
 	

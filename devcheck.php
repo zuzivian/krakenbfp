@@ -3,10 +3,10 @@
 
 include 'dev.php';
 
-echo 'Testing find_user_submit';
+echo 'Testing add_msg';
 echo '<br>';
-$id = 82;
-echo find_user_submit($conn, $id);
+$msg = 'I have nothing else to say (just kidding.)';
+echo add_msg($conn, $msg, 'zuzivian');
 
 
 

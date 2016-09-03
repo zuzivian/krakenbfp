@@ -8,6 +8,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
+
 // does basic database queries and returns the result
 function  db_query($conn, $sql)
 {
@@ -17,6 +18,7 @@ function  db_query($conn, $sql)
 	return $rows;
 }
 
+
 // selects a cpmpletely random message from the database
 function select_random_msg($conn) 
 {
@@ -25,6 +27,7 @@ function select_random_msg($conn)
 	return $row['response'];
 }
 
+
 // gets a random response given a telegram username
 function select_user_msg($conn, $username)
 {
@@ -32,6 +35,7 @@ function select_user_msg($conn, $username)
 	$row = db_query($conn, $sql);
 	return $row['response'];
 }
+
 
 // Finds the id of the given message. If there are duplicates, the id of the most recent entry is given.
 function find_id($conn, $msg) {
@@ -42,6 +46,21 @@ function find_id($conn, $msg) {
 	}
 	return $rows['id'];
 }
+
+
+// Gets the username of the submitter of a particular message
+function find_user_submit($conn, $id) {
+	
+	$sql = "SELECT user_submit FROM kraken_msg WHERE id = $id LIMIT 1";
+	if ($result = $conn->query($sql)) {
+		$row = $result->fetch_assoc();
+	}
+	return $row['user_submit'];
+}
+
+
+
+
 
 // us-cdbr-iron-east-04.cleardb.net/
 
