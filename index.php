@@ -68,21 +68,23 @@ if ($chat_type == "private")
 		{
 			$response = substr(strstr($text," "), 1);
 			$id = add_msg($conn, $response, $user_submit);
-			$msg = "Your message has been added to Kraken's database! (ID: $id, Message: $msg)";
+			$msg = "Your message has been added to Kraken's database! (ID: $id, Message: $response)";
 		}
 	}
 
 	else if ($cmd == '/updatemsg') 
 	{
-		if (count($words) < 3) {
+		if (count($words) < 3) 
+		{
 			$msg = "Assuming the ID of the message you are updating is 999, the format for /updatemsg is: \n\n/addmsg 999 This is the message that I want to update!";
 		}
 		else  
 		{
 			$id = intval($words[1]);
 			$response = substr(strstr($text," "), 1);
-			if (update_user_msg($conn, $user_submit, $id, $response)) {			
-				$msg = "Your message has been updated in Kraken's database! (ID: $id, Messsage: $msg)";
+			if (update_user_msg($conn, $user_submit, $id, $response)) 
+			{			
+				$msg = "Your message has been updated in Kraken's database! (ID: $id, Messsage: $response)";
 			}
 			else 
 			{
@@ -93,13 +95,15 @@ if ($chat_type == "private")
 
 	else if ($cmd == '/deletemsg') 
 	{
-		if (count($words) == 1) {
+		if (count($words) == 1) 
+		{
 			$msg = "Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/deletemsg 999";
 		}
 		else  
 		{
 			$id = intval($words[1]);
-			if (delete_msg($conn, $user_submit, $id)) {
+			if (delete_msg($conn, $user_submit, $id)) 
+			{
 				$msg = "Your message has been removed from Kraken's database - if it is yours. (ID: $id)";
 			}
 			else
@@ -111,12 +115,44 @@ if ($chat_type == "private")
 
 	else if ($cmd == '/updatetrigger') 
 	{
-		$msg = "Feature unavailable. Sorry folks.";
+		if (count($words) != 3) 
+		{
+			$msg = "Kraken uses triggers to decide if he should respond to messages, based on the contents of each message. Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/updatetrigger 999 myfavoritetriggerword";
+		}
+		else
+		{
+			$id = intval($words[1]);
+			$phrase = $words[2];
+			if (update_phrase($conn, $user_submit, $id, $phrase)) 
+			{
+				$msg = "Your message trigger has been updated. (ID: $id, trigger: $phrase)";
+			}
+			else
+			{
+				$msg = "Can't trigger a message that isn't yours!";
+			}
+		}
 	}
 
 	else if ($cmd == '/updateattrib') 
 	{
-		$msg = "Feature unavailable. Sorry folks.";
+		if (count($words) != 3) 
+		{
+			$msg = "Kraken uses attribs to decide if he should respond to someone. Usernames are caSe Sensitive! Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/updateattrib 999 teleusername";
+		}
+		else
+		{
+			$id = intval($words[1]);
+			$attrib = $words[2];
+			if (update_user_attrib($conn, $user_submit, $id, $attrib)) 
+			{
+				$msg = "Your user attrib has been updated. (ID: $id, attrib: $attrib)";
+			}
+			else
+			{
+				$msg = "Can't attrib a message that isn't yours!";
+			}
+		}
 	}
 
 }
