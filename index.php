@@ -94,22 +94,22 @@ if ($chat_type == "private")
 
 }
 
-else if ( $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
-{
-	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
-}
+// else if ( $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
+// {
+// 	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
+// }
+// 
+// else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
+// {
+// 	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
+// }
 
-else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
-{
-	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
-}
-
-else if (strpos($cmd, '/help') == 0) 
+else if ($cmd == "/help" || $cmd == "/help@bfpbot") 
 {
 	$msg = "List of commands (incomplete) :\n /addmsg - adds a message to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages Kraken to spew nonsense ";
 }
 
-else if (strpos($cmd, '/nonsense') == 0) 
+else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot") 
 {
 	// Spew nonsense.
 	$msg = select_random_msg($conn);
