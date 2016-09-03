@@ -57,27 +57,27 @@ $user_submit = $update->message->from->username;
 
 if ($update->message->chat->type == “private”) 
 {
-	if (strpos($cmd, '/addmsg') == 0)
+	if ($cmd == '/addmsg')
 	{
 		$msg = "Feature unavailable. Sorry folks.";
 	}
 
-	else if (strpos($cmd, '/updatemsg') == 0) 
+	else if ($cmd == '/updatemsg') 
 	{
 		$msg = "Feature unavailable. Sorry folks.";	
 	}
 
-	else if (strpos($cmd, '/deletemsg') == 0) 
+	else if ($cmd == '/deletemsg') 
 	{
 		$msg = "Feature unavailable. Sorry folks.";
 	}
 
-	else if (strpos($cmd, '/updatetrigger') == 0) 
+	else if ($cmd == '/updatetrigger') 
 	{
 		$msg = "Feature unavailable. Sorry folks.";
 	}
 
-	else if (strpos($cmd, '/updateattrib') == 0) 
+	else if ($cmd == '/updateattrib') 
 	{
 		$msg = "Feature unavailable. Sorry folks.";
 	}
