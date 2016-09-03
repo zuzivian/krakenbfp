@@ -168,7 +168,7 @@ else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/d
 }
 
 
-if ($cmd == "/help" || $cmd == "/help@bfpbot") 
+if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot")) 
 {
 	$msg = "List of commands (incomplete) :\n /addmsg - adds a message to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages Kraken to spew nonsense ";
 }
