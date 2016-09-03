@@ -2,16 +2,6 @@
 
 include 'db.php';
 
-// Finds the id of the given message. If there are duplicates, the id of the most recent entry is given.
-function find_id($conn, $msg) {
-	
-	$sql = "SELECT id FROM kraken_msg WHERE response = '$msg' ORDER BY time DESC LIMIT 1";
-	if ($result = $conn->query($sql)) {
-		$rows = $result->fetch_assoc();
-	}
-	return $rows['id'];
-}
-
 
 // Gets the username of the submitter of a particular message
 function find_user_submit($conn, $id) {
