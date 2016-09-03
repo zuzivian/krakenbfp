@@ -55,11 +55,17 @@ $user_submit = $update->message->from->username;
 // help - shows list of available commands
 // nonsense - encourages the Kraken to spew some nonsense 
 
-if ($update->message->chat->type == “private”) 
+if ($update->message->chat->type == "private") 
 {
 	if ($cmd == '/addmsg')
 	{
-		$msg = "Feature unavailable. Sorry folks.";
+		if (count($words) == 1) {
+			$msg = "The format for /addmsg is: \n/addmsg This is the message that I WANT to add!!";
+		}
+		else  
+		{
+			$msg = "Feature unavailable. Sorry folks.";
+		}
 	}
 
 	else if ($cmd == '/updatemsg') 
