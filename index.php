@@ -82,7 +82,8 @@ if ($chat_type == "private")
 		{
 			$id = intval($words[1]);
           $response1 = str_replace("/updatemsg", "", $text);
-          $response = str_replace($id, "", $response1);
+          $response2 = str_replace($id, "", $response1);
+          $response = str_replace("  ", "", $response2);
 			if (update_user_msg($conn, $user_submit, $id, $response)) 
 			{			
 				$msg = "Your message has been updated in Kraken's database! (ID: $id, Messsage: $response)";
