@@ -24,7 +24,7 @@ if (isset($_POST['user_submit']) && isset($_POST['msg'])) {
 	
 	if (isset($_POST['user_attrib'])) 
 	{
-		$user_attrib = mysqli_real_escape_string($conn, $_POST['user_submit']);
+		$user_attrib = mysqli_real_escape_string($conn, $_POST['user_attrib']);
 	}
 	else
 	{
