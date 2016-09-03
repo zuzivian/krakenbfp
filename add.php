@@ -56,7 +56,7 @@ if (isset($_POST['user_submit']) && isset($_POST['msg'])) {
 
 
 <h3>Add to KRAKEN's dictionary</h3>
-<form action="dev.php" method="post">
+<form action="add.php" method="post">
 Your Telegram username: <input type="text" name="user_submit"><br>
 Enter a new KRAKEN response: <input type="text" name="msg"><br>
 Response should be used in reply to this word (optional): <input type="text" name="phrase"><br>

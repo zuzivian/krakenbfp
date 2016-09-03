@@ -31,7 +31,8 @@ function add_msg($conn, $msg, $user_submit) {
 	if ($conn->query($sql) === TRUE) 
 	{
 		return find_id($conn, $msg);
-	} else 
+	} 
+	else 
 	{
 		return false;
 	}
@@ -80,8 +81,6 @@ function delete_msg($conn, $user_submit, $id) {
 		return $conn->query($sql);
 	}
 	else return false; //fail
-}
-
 }
 
 
