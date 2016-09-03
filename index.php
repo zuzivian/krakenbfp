@@ -62,24 +62,51 @@ if ($chat_type == "private")
 	if ($cmd == '/addmsg')
 	{
 		if (count($words) == 1) {
-			$msg = "The format for /addmsg is: \n/addmsg This is the message that I WANT to add!!";
+			$msg = "The format for /addmsg is: \n\n/addmsg This is the message that I want to add!";
 		}
 		else  
 		{
-			$msg = substr(strstr($text," "), 1);
-			$id = add_msg($conn, $msg, $user_submit);
-			$msg = "Your message has been added to Kraken's database! (ID: $id)";
+			$response = substr(strstr($text," "), 1);
+			$id = add_msg($conn, $response, $user_submit);
+			$msg = "Your message has been added to Kraken's database! (ID: $id, Message: $msg)";
 		}
 	}
 
 	else if ($cmd == '/updatemsg') 
 	{
-		$msg = "Feature unavailable. Sorry folks.";	
+		if (count($words) < 3) {
+			$msg = "Assuming the ID of the message you are updating is 999, the format for /updatemsg is: \n\n/addmsg 999 This is the message that I want to update!";
+		}
+		else  
+		{
+			$id = intval($words[1]);
+			$response = substr(strstr($text," "), 1);
+			if (update_user_msg($conn, $user_submit, $id, $response)) {			
+				$msg = "Your message has been updated in Kraken's database! (ID: $id, Messsage: $msg)";
+			}
+			else 
+			{
+				$msg = "Sorry, the update failed. Did you use the right ID?";
+			}
+		}
 	}
 
 	else if ($cmd == '/deletemsg') 
 	{
-		$msg = "Feature unavailable. Sorry folks.";
+		if (count($words) == 1) {
+			$msg = "Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/deletemsg 999";
+		}
+		else  
+		{
+			$id = intval($words[1]);
+			if (delete_msg($conn, $user_submit, $id)) {
+				$msg = "Your message has been removed from Kraken's database - if it is yours. (ID: $id)";
+			}
+			else
+			{
+				$msg = "Can't delete a message that isn't yours!";
+			}
+		}
 	}
 
 	else if ($cmd == '/updatetrigger') 
