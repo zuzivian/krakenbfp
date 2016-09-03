@@ -3,10 +3,9 @@
 
 include 'dev.php';
 
-echo 'Testing add_msg';
+echo 'Testing delete_msg';
 echo '<br>';
-$msg = 'I have nothing else to say (just kidding.)';
-echo add_msg($conn, $msg, 'zuzivian');
+echo delete_msg($conn, 'zuzivian', 192);
 
 
 

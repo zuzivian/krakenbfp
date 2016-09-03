@@ -59,6 +59,19 @@ function find_user_submit($conn, $id) {
 }
 
 
+// Adds a new message (and submitting username) to the database, returning the id of the row if succesful.
+function add_msg($conn, $msg, $user_submit) {
+	
+	$sql = "INSERT INTO kraken_msg (response, user_submit) VALUES ('$msg', '$user_submit')";
+	if ($conn->query($sql) === TRUE) 
+	{
+		return find_id($conn, $msg);
+	} 
+	else 
+	{
+		return false;
+	}
+}
 
 
 
