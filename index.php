@@ -46,6 +46,7 @@ $update = json_decode(file_get_contents('php://input'));
 // Usage: '$words[0]' means the first word in the message
 $words = explode(" ", $update->message->text);
 $cmd = $words[0];
+$user_submit = $update->message->from->username;
 
 // The Bot now decides, based on the ruleset, on an appropriate response, or to keep quiet.
 
@@ -54,19 +55,46 @@ $cmd = $words[0];
 // help - shows list of available commands
 // nonsense - encourages the Kraken to spew some nonsense 
 
-if ($cmd == '/add' || $cmd == '/add@bfpbot')
-{
-	// The add message function is still under construction.
-	$msg = "Feature unavailable. Sorry folks.";
+if ($update->message->chat->type == “private”) {
+	if (strpos($cmd, '/addmsg') == 0)
+	{
+		$msg = "Feature unavailable. Sorry folks.";
+	}
+
+	else if (strpos($cmd, '/updatemsg') == 0) 
+	{
+		$msg = "Feature unavailable. Sorry folks.";	
+	}
+
+	else if (strpos($cmd, '/deletemsg') == 0) 
+	{
+		$msg = "Feature unavailable. Sorry folks.";
+	}
+
+	else if (strpos($cmd, '/updatetrigger') == 0) 
+	{
+		$msg = "Feature unavailable. Sorry folks.";
+	}
+
+	else if (strpos($cmd, '/updateattrib') == 0) 
+	{
+		$msg = "Feature unavailable. Sorry folks.";
+	}
+
 }
 
-else if ($cmd == '/help' || $cmd == '/help@bfpbot') 
+else if ( (strpos($cmd, '/addmsg') == 0) || (strpos($cmd, '/updatemsg') == 0) || (strpos($cmd, '/deletemsg') == 0) || (strpos($cmd, '/updatetrigger') == 0) || (strpos($cmd, '/updateattrib') == 0) )
 {
-	// Sends a help message
-	$msg = "List of commands :\n /add - adds to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages Kraken to spew nonsense ";
+	$msg = "Hey @$user_submit, you'll want to use that command in a private chat with me.";
 }
 
-else if ($cmd == '/nonsense' || $cmd == '/nonsense@bfpbot') 
+
+else if (strpos($cmd, '/help') == 0) 
+{
+	$msg = "List of commands (incomplete) :\n /addmsg - adds a message to Kraken's existing repertoire  \n /help - Shows list of available commands \n /nonsense - encourages Kraken to spew nonsense ";
+}
+
+else if (strpos($cmd, '/nonsense') == 0) 
 {
 	// Spew nonsense.
 	$msg = select_random_msg($conn);
@@ -88,7 +116,7 @@ else
 
 	if (!$msg && rand(1,15) == 1) 
 	{
-		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $update->message->from->username);
+		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $user_submit);
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
