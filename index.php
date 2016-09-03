@@ -44,9 +44,11 @@ $update = json_decode(file_get_contents('php://input'));
 
 // Takes incoming message and breaks it down into an array of strings, one word per string
 // Usage: '$words[0]' means the first word in the message
-$words = explode(" ", $update->message->text);
+$text = $update->message->text;
+$words = explode(" ", $text);
 $cmd = $words[0];
 $user_submit = $update->message->from->username;
+$chat_type = $update->message->chat->type;
 
 // The Bot now decides, based on the ruleset, on an appropriate response, or to keep quiet.
 
@@ -55,7 +57,7 @@ $user_submit = $update->message->from->username;
 // help - shows list of available commands
 // nonsense - encourages the Kraken to spew some nonsense 
 
-if ($update->message->chat->type == "private") 
+if ($chat_type == "private") 
 {
 	if ($cmd == '/addmsg')
 	{
@@ -64,7 +66,9 @@ if ($update->message->chat->type == "private")
 		}
 		else  
 		{
-			$msg = "Feature unavailable. Sorry folks.";
+			$msg = substr(strstr($text," "), 1);
+			$id = add_msg($conn, $msg, $user_submit);
+			$msg = "Your message has been added to Kraken's database! (ID: $id)";
 		}
 	}
 
