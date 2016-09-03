@@ -179,7 +179,7 @@ else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot")
 	$msg = select_random_msg($conn);
 }
 
-else    
+else if (!$msg)   
 {
 	// See if anything is worth a reply
 	for ($i = 0; $words[$i]; $i++) 
