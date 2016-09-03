@@ -38,6 +38,7 @@ function add_msg($conn, $msg, $user_submit) {
 	}
 }
 
+// Updates a user's message, given the id
 function update_user_msg($conn, $user_submit, $id, $new_msg) {
 	
 	// check if the editor is the wrightful owner of the message.
@@ -50,6 +51,7 @@ function update_user_msg($conn, $user_submit, $id, $new_msg) {
 }
 
 
+// updates the user attributed to a message
 function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 	
 	// check if the editor is the wrightful owner of the message.
@@ -61,6 +63,8 @@ function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 	else return false; //fail
 }
 
+
+// updates a phrase associated with a message
 function update_phrase($conn, $user_submit, $id, $phrase) {
 	
 	// check if the editor is the wrightful owner of the message.
@@ -72,6 +76,8 @@ function update_phrase($conn, $user_submit, $id, $phrase) {
 	else return false; //fail
 }
 
+
+// deletes an entire message.
 function delete_msg($conn, $user_submit, $id) {
 	
 	// check if the editor is the wrightful owner of the message.
