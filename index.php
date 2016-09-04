@@ -138,7 +138,7 @@ if ($chat_type == "private")
 		{
 			$msg = "Assuming the ID of the message you are checking is 999, the format for /id is: \n\n/id 1";
 			if ($rows = find_user_ids($conn, $user_submit)) {
-				$msg .= "\n\nID / trigger / attrib";
+				$msg .= "\n\nHere are the messages that you have already added:\nID / trigger / attrib";
 				for ($i=0; $rows[$i]; $i++) {
 					$msg .=  "\n" . $rows[$i]['id'] . " / " . $rows[$i]['phrase'] . " / " . $rows[$i]['user_attrib'];
 				}
