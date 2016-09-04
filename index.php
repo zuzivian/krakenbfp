@@ -320,15 +320,23 @@ if ($msg) {
 // This is where the bot's inline query logic resides.
 
 if ($query = $update->inline_query->query) {
-	$sql = "SELECT id, response FROM kraken_msg WHERE response LIKE '%$query%' LIMIT 5";
+	$sql = "SELECT id, response FROM kraken_msg LIMIT 5";
 	if ($result = $conn->query($sql)) {
 		$rows = array();
 		while($line = $result->fetch_assoc())
 		{
-    		$rows[] = $client->InlineQueryResultArticle(['type' => 'article', 'id' => $line['id'], 'input_message_content' => $client->InputTextMessageContent(['message_text' => $line['response']]) , 'title' => 'Nil']);
+    		$rows[] = $client->InlineQueryResult([
+    			'type' => 'article',
+    			'id' => $line['id'],
+    			'input_message_content' => $client->InputTextMessageContent(['message_text' => $line['response']]), 
+    			'title' => 'Nil'
+    		]);
     	}
     	
-    	$response = $client->answerInlineQuery(['inline_query_id' => $update->inline_query->id, 'results' => $rows]);
+    	$response = $client->answerInlineQuery([
+    		'inline_query_id' => $update->inline_query->id, 
+    		'results' => $rows
+    	]);
     }
     	
 }
