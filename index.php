@@ -141,13 +141,12 @@ if ($chat_type == "private")
 		else
 		{
 			$id = $words[1];
-			$sql = "SELECT response, user_submit, user_attrib, phrase FROM kraken_msg WHERE id = '$id' LIMIT 1";
-			$rows = db_query($conn, $sql)
+			$row = get_row($conn, $id);
 			$msg = "Message ID: " . $id;
-			$msg .= "\nSubmitted by: " . $rows['user_submit'];
-			$msg .= "\nTrigger word: " . $rows['phrase'];
-			$msg .= "\nAttributed person: " . $rows['user_atrrib'];
-			$msg .= "\nMessage: " . $rows['response'];
+			$msg .= "\nSubmitted by: " . $row['user_submit'];
+			$msg .= "\nTrigger word: " . $row['phrase'];
+			$msg .= "\nAttributed person: " . $row['user_atrrib'];
+			$msg .= "\nMessage: " . $row['response'];
 		}
 	}
 

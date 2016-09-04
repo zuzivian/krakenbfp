@@ -50,6 +50,18 @@ function find_id($conn, $msg) {
 	return $rows['id'];
 }
 
+// Finds the id of the given message. If there are duplicates, the id of the most recent entry is given.
+function get_row($conn, $id) {
+	
+	$id = mysqli_real_escape_string($conn, $id);
+	$sql = "SELECT response, user_submit, user_attrib, phrase FROM kraken_msg WHERE id = '$id' LIMIT 1";
+	if ($result = $conn->query($sql)) {
+		$rows = $result->fetch_assoc();
+	}
+	return $rows;
+}
+
+
 
 // Gets the username of the submitter of a particular message
 function find_user_submit($conn, $id) {
