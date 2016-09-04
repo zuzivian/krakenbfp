@@ -42,8 +42,13 @@ if ($chat_type == "private")
 		else  
 		{
 			$response = substr(strstr($text," "), 1);
-			$id = add_msg($conn, $response, $user_submit);
-			$msg = "Your message has been added to Kraken's database! (ID: $id, Message: $response)";
+			if (find_id($conn, $response)) {
+				$msg = "Sorry, you can't add that. Someone else has already submitted that message!";
+			}
+			else {
+				$id = add_msg($conn, $response, $user_submit);
+				$msg = "Your message has been added to Kraken's database! (ID: $id, Message: $response)";
+			}
 		}
 	}
 
@@ -158,6 +163,19 @@ if ($chat_type == "private")
 			{
 				$msg = "Message with ID $id not found.";
 			}
+		}
+	}
+	
+	else if ($cmd == '/find')
+	{
+		if (count($words) > 1) {
+			$search = substr($words, 6);
+			$id = find_id($conn, $search);
+			$msg = "The ID of that message is $id.";
+		}
+		else
+		{
+			$msg = "Usage: /find The message that I need an ID for."
 		}
 	}
 
