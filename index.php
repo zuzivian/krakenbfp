@@ -140,7 +140,7 @@ if ($chat_type == "private")
 			if ($rows = find_user_ids($conn, $user_submit)) {
 				$msg .= "\n\nID / trigger / attrib";
 				for ($i=0; $rows[$i]; $i++) {
-					$msg .=  "\n" . $rows['id'][$i] . " / " . $rows['phrase'][$i] . " / " . $rows['user_attrib'][$i];
+					$msg .=  "\n" . $rows['id'] . " / " . $rows['phrase'] . " / " . $rows['user_attrib'];
 				}
 			}
 		}
