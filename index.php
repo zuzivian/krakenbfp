@@ -137,16 +137,27 @@ if ($chat_type == "private")
 		if (count($words) != 2) 
 		{
 			$msg = "Assuming the ID of the message you are checking is 999, the format for /id is: \n\n/id 1";
+			if ($rows = find_user_ids($conn, $user_submit)) {
+				$msg .= "\n\nID / trigger / attrib";
+				for ($i=0; $rows[$i]; $i++) {
+					$msg .=  "\n" . $rows[$i]['id'] . " / " . $rows[$i]['phrase'] . " / " . $rows[$i]['user_attrib'];
+				}
+			}
 		}
 		else
 		{
 			$id = $words[1];
-			$row = get_row($conn, $id);
-			$msg = "Message ID: " . $id;
-			$msg .= "\nSubmitted by: " . $row['user_submit'];
-			$msg .= "\nTrigger word: " . $row['phrase'];
-			$msg .= "\nAttributed person: " . $row['user_atrrib'];
-			$msg .= "\nMessage: " . $row['response'];
+			if ($row = get_row($conn, $id)) {
+				$msg = "Message ID: " . $id;
+				$msg .= "\nSubmitted by: " . $row['user_submit'];
+				$msg .= "\nTrigger word: " . $row['phrase'];
+				$msg .= "\nAttributed person: " . $row['user_atrrib'];
+				$msg .= "\nMessage: " . $row['response'];
+			}
+			else
+			{
+				$msg = "Message with ID $id not found.";
+			}
 		}
 	}
 
