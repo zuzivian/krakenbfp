@@ -32,6 +32,7 @@ function select_random_msg($conn)
 // gets a random response given a telegram username
 function select_user_msg($conn, $username)
 {
+	$username = mysqli_real_escape_string($conn, $username);
 	$sql = "SELECT response FROM kraken_msg WHERE user_attrib = '$username' ORDER BY RAND() LIMIT 1";
 	$row = db_query($conn, $sql);
 	return $row['response'];
@@ -53,6 +54,7 @@ function find_id($conn, $msg) {
 // Gets the username of the submitter of a particular message
 function find_user_submit($conn, $id) {
 	
+	$id = mysqli_real_escape_string($conn, $id);
 	$sql = "SELECT user_submit FROM kraken_msg WHERE id = $id LIMIT 1";
 	if ($result = $conn->query($sql)) {
 		$row = $result->fetch_assoc();
@@ -80,6 +82,7 @@ function add_msg($conn, $msg, $user_submit) {
 // Deletes an entire message.
 function delete_msg($conn, $user_submit, $id) {
 	
+	$id = mysqli_real_escape_string($conn, $id);
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
 		// if so delete the row
@@ -93,6 +96,7 @@ function delete_msg($conn, $user_submit, $id) {
 // Updates a user's message, given the id. Returns 1 if successful.
 function update_user_msg($conn, $user_submit, $id, $new_msg) {
 	
+	$id = mysqli_real_escape_string($conn, $id);
 	$new_msg = mysqli_real_escape_string($conn, $new_msg);
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
@@ -107,7 +111,8 @@ function update_user_msg($conn, $user_submit, $id, $new_msg) {
 // updates the user attributed to a message. Returns 1 if successful.
 function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 	
-		$user_attrib = mysqli_real_escape_string($conn, $user_attrib);
+	$id = mysqli_real_escape_string($conn, $id);
+	$user_attrib = mysqli_real_escape_string($conn, $user_attrib);
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
 		// if so update the message
@@ -123,6 +128,7 @@ function update_phrase($conn, $user_submit, $id, $phrase) {
 	
 	// check if the editor is the rightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
+    	$id = mysqli_real_escape_string($conn, $id);
     	$phrase = strtolower($phrase);
     	$phrase = mysqli_real_escape_string($conn, $phrase);
 		// if so update the message
