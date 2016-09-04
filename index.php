@@ -7,7 +7,6 @@ KRAKEN: A BFP BOT
 */
 
 // DO NOT EDIT
-$time_pre = microtime(true);
 require 'vendor/autoload.php';
 // Database functions can be found in db.php
 require 'db.php';
@@ -132,19 +131,40 @@ if ($chat_type == "private")
 			}
 		}
 	}
+	
+	else if ($cmd == '/id')
+	{
+		if (count($words) != 2) 
+		{
+			$msg = "Assuming the ID of the message you are checking is 999, the format for /id is: \n\n/id 1";
+		}
+		else
+		{
+			$id = $words[1];
+			$sql = "SELECT response, user_submit, user_attrib, phrase FROM kraken_msg WHERE id = '$id' LIMIT 1";
+			$rows = db_query($conn, $sql)
+			$msg = "Message ID: " . $id;
+			$msg .= "\nSubmitted by: " . $rows['user_submit'];
+			$msg .= "\nTrigger word: " . $rows['phrase'];
+			$msg .= "\nAttributed person: " . $rows['user_atrrib'];
+			$msg .= "\nMessage: " . $rows['response'];
+		}
+	}
 
 }
 
-else if ( $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
+else if ( $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
 {
 	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
 }
 
-else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
+else if ( $cmd == '/id@bfpbot' || $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
 {
 	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
 }
 
+
+// This section deals generally with general chat messages and group chat-enabled commands
 
 if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot")) 
 {
@@ -236,15 +256,6 @@ if ($msg) {
  	]);
  }
     
-    
-
-// Display something on the webpage
-
-$time_post = microtime(true);
-$exec_time = $time_post - $time_pre; 
-echo $exec_time*1000 . " ms";
-echo "<br><br>Random Message:<br>";
-echo select_random_msg($conn);
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!

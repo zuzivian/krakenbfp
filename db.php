@@ -11,7 +11,7 @@ $conn = new mysqli($server, $username, $password, $db);
 
 
 // does basic database queries and returns the result
-function  db_query($conn, $sql)
+function db_query($conn, $sql)
 {
 	if ($result = $conn->query($sql)) {
 		$rows = $result->fetch_assoc();
