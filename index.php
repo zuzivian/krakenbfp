@@ -169,7 +169,8 @@ else if (!$msg)
 	// See if anything is worth a reply
 	for ($i = 0; $words[$i]; $i++) 
 	{
-	   $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $words[$i] . "' ORDER BY RAND() LIMIT 1";
+	   $word = strtolower($words[$i]);
+      $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $word . "' ORDER BY RAND() LIMIT 1";
       if (list($dbmsg) = db_query($conn, $sql)) 
 		{
           $dbmsg = db_query($conn, $sql);
