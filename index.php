@@ -9,31 +9,11 @@ KRAKEN: A BFP BOT
 // DO NOT EDIT
 $time_pre = microtime(true);
 require 'vendor/autoload.php';
+// Database functions can be found in db.php
 require 'db.php';
 
-$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set your access token
+$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set Telegram access token
 $update = json_decode(file_get_contents('php://input'));
-
-// DO NOT EDIT THE ABOVE
-
-
-// --------------------------------------
-/* FUNCTIONS */
-// Beware when editing please.
-
-
-// coming soon
-
-// added so far:
-// $conn is a given instance of the SQL connection
-// gets the message's username $update->message->from->username
-// db_query($conn, $sql);
-// select_user_msg($conn, $update->message->from->username)
-// select_random_msg($conn);
-
-/* END FUNCTIONS */
-// -------------------------------------
-
 
 
 //   -------------------
@@ -42,7 +22,7 @@ $update = json_decode(file_get_contents('php://input'));
 // This is where the bot's logic resides.
 
 
-// Takes incoming message and breaks it down into an array of strings, one word per string
+// Takes incoming message and breaks it down into an array of strings, $words
 
 $text = $update->message->text;
 $words = explode(" ", $text);
@@ -50,7 +30,7 @@ $cmd = $words[0];
 $user_submit = $update->message->from->username;
 $chat_type = $update->message->chat->type;
 
-// The Bot now decides, based on the ruleset, on an appropriate response, or to keep quiet.
+// The Bot now decides, based on the ruleset, on an appropriate response, or keeps quiet.
 
 
 if ($chat_type == "private") 

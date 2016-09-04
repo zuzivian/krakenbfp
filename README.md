@@ -1,8 +1,10 @@
 # KRAKEN Bot
-A bot that 'random' messages to your Telegram chat group.
+A bot that sends 'random' messages to the BFP Telegram chat group.
 
 ##Description
 I am BFP's lame joke extraordinaire. Feed me lines as you wish, but be warned: I am unpredictable!
+
+curently under heavy development. Do use and adapt at you own risk.
 
 Uses GeeksWeb Bot, a simplified and lightweight version of [Jadibot by Jaavid](https://github.com/jaavid/jadibot/) Telegram bot.
 
