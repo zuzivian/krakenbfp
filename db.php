@@ -32,7 +32,7 @@ function select_random_msg($conn)
 // gets a random response given a telegram username
 function select_user_msg($conn, $username)
 {
-	$sql = "SELECT response FROM kraken_msg WHERE user_attrib = '" . $username . "' ORDER BY RAND() LIMIT 1";
+	$sql = "SELECT response FROM kraken_msg WHERE user_attrib = '$username' ORDER BY RAND() LIMIT 1";
 	$row = db_query($conn, $sql);
 	return $row['response'];
 }
@@ -41,6 +41,7 @@ function select_user_msg($conn, $username)
 // Finds the id of the given message. If there are duplicates, the id of the most recent entry is given.
 function find_id($conn, $msg) {
 	
+	$msg = mysqli_real_escape_string($conn, $msg);
 	$sql = "SELECT id FROM kraken_msg WHERE response = '$msg' ORDER BY time DESC LIMIT 1";
 	if ($result = $conn->query($sql)) {
 		$rows = $result->fetch_assoc();
@@ -63,6 +64,7 @@ function find_user_submit($conn, $id) {
 // Adds a new message (and submitting username) to the database, returning the id of the row if succesful.
 function add_msg($conn, $msg, $user_submit) {
 	
+	$msg = mysqli_real_escape_string($conn, $msg);
 	$sql = "INSERT INTO kraken_msg (response, user_submit) VALUES ('$msg', '$user_submit')";
 	if ($conn->query($sql) === TRUE) 
 	{
@@ -91,6 +93,7 @@ function delete_msg($conn, $user_submit, $id) {
 // Updates a user's message, given the id. Returns 1 if successful.
 function update_user_msg($conn, $user_submit, $id, $new_msg) {
 	
+	$new_msg = mysqli_real_escape_string($conn, $new_msg);
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
 		// if so update the message
@@ -104,6 +107,7 @@ function update_user_msg($conn, $user_submit, $id, $new_msg) {
 // updates the user attributed to a message. Returns 1 if successful.
 function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 	
+		$user_attrib = mysqli_real_escape_string($conn, $user_attrib);
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
 		// if so update the message
@@ -119,7 +123,8 @@ function update_phrase($conn, $user_submit, $id, $phrase) {
 	
 	// check if the editor is the rightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
-       $phrase = strtolower($phrase);
+    	$phrase = strtolower($phrase);
+    	$phrase = mysqli_real_escape_string($conn, $phrase);
 		// if so update the message
 		$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
 		return $conn->query($sql);

@@ -166,35 +166,49 @@ else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot")
 
 else if (!$msg)   
 {
-	// See if anything is worth a reply
-	for ($i = 0; $words[$i]; $i++) 
+	// Check for any keywords listed in the text.
+	if (rand(1,3) <= 2 || $chat_type == "private")
 	{
-	   $word = strtolower($words[$i]);
-      $sql = "SELECT response FROM kraken_msg WHERE phrase = '" . $word . "' ORDER BY RAND() LIMIT 1";
-      if (list($dbmsg) = db_query($conn, $sql)) 
+
+		for ($i = 0; $words[$i]; $i++) 
 		{
-          $dbmsg = db_query($conn, $sql);
-          $msg = $dbmsg['response'];
-			break;
-		}
+			$word = strtolower($words[$i]);
+			$sql = "SELECT response FROM kraken_msg WHERE phrase = '$word' AND user_attrib = '$user_submit' ORDER BY RAND() LIMIT 1";
+			if (list($dbmsg) = db_query($conn, $sql)) 
+			{
+				$dbmsg = db_query($conn, $sql);
+				$msg = $dbmsg['response'];
+				break;
+			}
+		}		
+	}
+	
+	if (!$msg && (rand(1,2) == 1 || $chat_type == "private"))
+	{
+		for ($i = 0; $words[$i]; $i++) 
+		{
+			$word = strtolower($words[$i]);
+			$sql = "SELECT response FROM kraken_msg WHERE phrase = '$word' ORDER BY RAND() LIMIT 1";
+			if (list($dbmsg) = db_query($conn, $sql)) 
+			{
+				$dbmsg = db_query($conn, $sql);
+				$msg = $dbmsg['response'];
+				break;
+			}
+		}	
 	}
 
-	if (!$msg && rand(1,15) == 1) 
+	if (!$msg && (rand(1,40) == 1 || $chat_type == "private")) 
 	{
 		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $user_submit);
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	if (!$msg && rand(1,50) == 1) 
+	if (!$msg && (rand(1,150) == 1 || $chat_type == "private") )
 	{
 		$msg = select_random_msg($conn);
 	}
-	
-	// Gives Kraken some chill.
-	if (rand(1,2) == 1) 
-	{
-		$msg = null;
-	}
+
 }
 
 
