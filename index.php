@@ -170,25 +170,44 @@ if ($chat_type == "private")
 	{
 		if (count($words) > 1) {
 			$search = substr($words, 6);
-			$id = find_id($conn, $search);
+			if ($id = find_id($conn, $search))
+			{
+				$msg = "The ID of that message is $id.";
+			}
+			else
+			{
+				$msg = "No such message found.";
+			}
+		}
+		else
+		{
+			$msg = "Usage: /find The message that I need an ID for.";
+		}
+	}
+	
+	else if ($update->message->forward_from->username == 'bfpbot') 
+	{
+		$search = $update->message->text;
+		if ($id = find_id($conn, $search))
+		{
 			$msg = "The ID of that message is $id.";
 		}
 		else
 		{
-			$msg = "Usage: /find The message that I need an ID for."
+			$msg = "No such message found.";
 		}
 	}
 
 }
 
-else if ( $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
+else if ( $cmd == '/find' || $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
 {
-	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
+	$msg = "@$user_submit, you'll want to use $cmd in a private chat with me.";
 }
 
-else if ( $cmd == '/id@bfpbot' || $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
+else if ( $cmd == '/find@bfpbot' || $cmd == '/id@bfpbot' || $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/deletemsg@bfpbot' || $cmd == '/updatetrigger@bfpbot' || $cmd == '/updateattrib@bfpbot' )
 {
-	$msg = "Hey @$user_submit, you'll want to use $cmd in a private chat with me.";
+	$msg = "Hey @$user_submit, please use $cmd in a private chat with me.";
 }
 
 
@@ -199,11 +218,19 @@ if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot"))
 	$msg = "List of commands: 
 /addmsg - Adds to Kraken's repertoire
 /deletemsg - Deletes a message of your own
+/find - conducts a message ID search
+/forward - retrieves message IDs 
+/id - lists details of any message
 /help - shows list of available commands
 /nonsense - encourages kraken to spew nonsense
 /updateattrib - Updates the person attributed to a msg
 /updatemsg - Updates a message
-/updatetrigger - Updates the word associated with a msg ";
+/updatetrigger - Updates the word associated with a msg";
+}
+
+else if ($cmd == "/forward" || $cmd == "/forward@bfpbot")
+{
+	$msg = "Forward me any of my own messages and I will try to find its details for you.";
 }
 
 else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot") 
