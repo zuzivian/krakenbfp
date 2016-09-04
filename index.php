@@ -173,10 +173,10 @@ else if ( $cmd == '/addmsg@bfpbot' || $cmd == '/updatemsg@bfpbot' || $cmd == '/d
 if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot")) 
 {
 	$msg = "List of commands: \naddmsg - Adds to Kraken's repertoire \ndeletemsg - Deletes a message of your own \nhelp - shows list of available commands
-\nnonsense - encourages kraken to spew nonsense
-\nupdateattrib - Updates the person attributed to a msg
-\nupdatemsg - Updates a message
-\nupdatetrigger - Updates the word associated with a msg ";
+nonsense - encourages kraken to spew nonsense
+updateattrib - Updates the person attributed to a msg
+updatemsg - Updates a message
+updatetrigger - Updates the word associated with a msg ";
 }
 
 else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot") 
