@@ -169,7 +169,7 @@ if ($chat_type == "private")
 	else if ($cmd == '/find')
 	{
 		if (count($words) > 1) {
-			$search = substr($words, 6);
+			$search = substr($text, 6);
 			if ($id = find_id($conn, $search))
 			{
 				$msg = "The ID of that message is $id.";
