@@ -15,10 +15,12 @@ $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5v
 $update = json_decode(file_get_contents('php://input'));
 
 
+
+
 //   -------------------
 //   MESSAGE PROCESSING
 //   -------------------
-// This is where the bot's logic resides.
+// This is where the bot's message logic resides.
 
 
 // Takes incoming message and breaks it down into an array of strings, $words
@@ -311,6 +313,30 @@ if ($msg) {
  	]);
  }
     
+
+//   -------------------
+//   INLINE QUERY
+//   -------------------
+// This is where the bot's inline query logic resides.
+
+if ($query = $update->InlineQuery->query) {
+	$sql = "SELECT response FROM kraken_msg WHERE response LIKE '%$query%' LIMIT 5";
+	if ($result = $conn->query($sql)) {
+		$rows = array();
+		while($line = $result->fetch_assoc())
+		{
+    		$rows[] = $line['response'];
+    	}
+    	
+    	$response = $client->answerInlineQuery(['inline_query_id' => $update->answerInlineQuery->id, 'results' => $rows]);
+    }
+    	
+    	
+	}
+}
+
+
+
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!
