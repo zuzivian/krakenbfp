@@ -43,7 +43,7 @@ $update = json_decode(file_get_contents('php://input'));
 
 
 // Takes incoming message and breaks it down into an array of strings, one word per string
-// Usage: '$words[0]' means the first word in the message
+
 $text = $update->message->text;
 $words = explode(" ", $text);
 $cmd = $words[0];
@@ -52,10 +52,6 @@ $chat_type = $update->message->chat->type;
 
 // The Bot now decides, based on the ruleset, on an appropriate response, or to keep quiet.
 
-// LIST OF EXISTING COMMANDS
-// add - adds to Kraken's existing repertoire (broken)
-// help - shows list of available commands
-// nonsense - encourages the Kraken to spew some nonsense 
 
 if ($chat_type == "private") 
 {
