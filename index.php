@@ -177,7 +177,10 @@ else if (!$msg)
 			if (list($dbmsg) = db_query($conn, $sql)) 
 			{
 				$dbmsg = db_query($conn, $sql);
-				$msg = $dbmsg['response'];
+				if ($chat_type != "private") {
+					$msg = "@" . $update->message->from->username . " ";
+				}
+				$msg .= $dbmsg['response'];
 				break;
 			}
 		}		
@@ -189,7 +192,7 @@ else if (!$msg)
 		{
 			$word = strtolower($words[$i]);
 			$sql = "SELECT response FROM kraken_msg WHERE phrase = '$word' ORDER BY RAND() LIMIT 1";
-			if (list($dbmsg) = db_query($conn, $sql)) 
+			if (list($dbmsg) = db_query($conn, $sql))
 			{
 				$dbmsg = db_query($conn, $sql);
 				$msg = $dbmsg['response'];
@@ -200,7 +203,10 @@ else if (!$msg)
 
 	if (!$msg && (rand(1,40) == 1 || $chat_type == "private")) 
 	{
-		$msg = "@" . $update->message->from->username . " " . select_user_msg($conn, $user_submit);
+		if ($chat_type != "private") {
+			$msg = "@" . $update->message->from->username . " ";
+		}
+		$msg .= select_user_msg($conn, $user_submit);
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
