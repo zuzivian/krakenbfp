@@ -56,7 +56,12 @@ function find_user_ids($conn, $user_submit) {
 	$msg = mysqli_real_escape_string($conn, $msg);
 	$sql = "SELECT id, phrase, user_attrib FROM kraken_msg WHERE user_submit = '$user_submit' ORDER BY id";
 	if ($result = $conn->query($sql)) {
-		$rows = $result->fetch_assoc();
+		$rows = array();
+		$result->fetch_assoc();
+		while($line = $result->fetch_assoc())
+		{
+    		$rows[] = $line;
+    	}
 	}
 	return $rows;
 }
