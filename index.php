@@ -331,8 +331,6 @@ if ($query = $update->InlineQuery->query) {
     	$response = $client->answerInlineQuery(['inline_query_id' => $update->answerInlineQuery->id, 'results' => $rows]);
     }
     	
-    	
-	}
 }
 
 
