@@ -119,7 +119,7 @@ if ($chat_type == "private")
 	{
 		if (count($words) != 3) 
 		{
-			$msg = "Kraken uses triggers to decide if he should respond to messages, based on the contents of each message. Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/updatetrigger 999 myfavoritetriggerword";
+			$msg = "Kraken uses triggers to decide if he should respond to messages, based on the contents of each message. \n\nAssuming the ID of the message you are updating is 999, the format for /updatetrigger is: \n\n/updatetrigger 999 myfavoritetriggerword";
 		}
 		else
 		{
@@ -140,7 +140,7 @@ if ($chat_type == "private")
 	{
 		if (count($words) != 3) 
 		{
-			$msg = "Kraken uses attribs to decide if he should respond to someone. Usernames are caSe Sensitive! Assuming the ID of the message you are updating is 999, the format for /deletemsg is: \n\n/updateattrib 999 teleusername";
+			$msg = "Kraken uses attribs to decide if he should respond to someone. Usernames are caSe Sensitive! \n\nAssuming the ID of the message you are updating is 999, the format for /updateattrib is: \n\n/updateattrib 999 teleusername";
 		}
 		else
 		{
