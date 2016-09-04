@@ -122,9 +122,9 @@ function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
 // updates a phrase associated with a message. Returns 1 if successful.
 function update_phrase($conn, $user_submit, $id, $phrase) {
 	
-	// check if the editor is the wrightful owner of the message.
+	// check if the editor is the rightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
-       $phrase = mysqli_real_escape_string($phrase);
+//       $phrase = mysqli_real_escape_string($phrase);
        $phrase = strtolower($phrase);
 		// if so update the message
 		$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
