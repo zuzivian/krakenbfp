@@ -201,7 +201,7 @@ else if (!$msg)
 		}	
 	}
 
-	if (!$msg && (rand(1,40) == 1 || $chat_type == "private")) 
+	if (!$msg && rand(1,40) == 1) 
 	{
 		if ($chat_type != "private") {
 			$msg = "@" . $update->message->from->username . " ";
