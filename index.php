@@ -325,7 +325,7 @@ if ($query = $update->inline_query->query) {
 		$rows = array();
 		while($line = $result->fetch_assoc())
 		{
-    		$rows[] = new $client->request('InlineQueryResultArticle', [
+    		$rows[] = $client->request('InlineQueryResultArticle', [
     			'type' => 'article',
     			'id' => $line['id'],
     			'input_message_content' => $client->request('InputTextMessageContent', ['message_text' => $line['response']]), 
