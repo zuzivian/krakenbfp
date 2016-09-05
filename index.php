@@ -339,9 +339,9 @@ if ($msg) {
 //     		'inline_query_id' => $update->inline_query->id, 
 //     		'results' => $rows
 //     	]);
-    }
-    	
-}
+//     }
+//     	
+// }
 
 
 
