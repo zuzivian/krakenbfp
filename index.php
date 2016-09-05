@@ -325,15 +325,15 @@ if ($query = $update->inline_query->query) {
 		$rows = array();
 		while($line = $result->fetch_assoc())
 		{
-    		$rows[] = new $client->InlineQueryResultArticle([
+    		$rows[] = new $client->request('InlineQueryResultArticle', [
     			'type' => 'article',
     			'id' => $line['id'],
-    			'input_message_content' => new $client->InputTextMessageContent(['message_text' => $line['response']]), 
+    			'input_message_content' => $client->request('InputTextMessageContent', ['message_text' => $line['response']]), 
     			'title' => 'Nil'
     		]);
     	}
     	
-    	$response = $client->answerInlineQuery([
+    	$response = $client->request('answerInlineQuery', [
     		'inline_query_id' => $update->inline_query->id, 
     		'results' => $rows
     	]);
