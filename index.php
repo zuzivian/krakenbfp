@@ -314,29 +314,31 @@ if ($msg) {
  }
     
 
-//   -------------------
-//   INLINE QUERY
-//   -------------------
-// This is where the bot's inline query logic resides.
 
-if ($query = $update->inline_query->query) {
-	$sql = "SELECT id, response FROM kraken_msg LIMIT 5";
-	if ($result = $conn->query($sql)) {
-		$rows = array();
-		while($line = $result->fetch_assoc())
-		{
-    		$rows[] = $client->request('InlineQueryResultArticle', [
-    			'type' => 'article',
-    			'id' => $line['id'],
-    			'input_message_content' => $client->request('InputTextMessageContent', ['message_text' => $line['response']]), 
-    			'title' => 'Nil'
-    		]);
-    	}
-    	
-    	$response = $client->request('answerInlineQuery', [
-    		'inline_query_id' => $update->inline_query->id, 
-    		'results' => $rows
-    	]);
+ 
+// //   -------------------
+// //   INLINE QUERY
+// //   -------------------
+// // This is where the bot's inline query logic resides.
+// 
+// if ($query = $update->inline_query->query) {
+// 	$sql = "SELECT id, response FROM kraken_msg LIMIT 5";
+// 	if ($result = $conn->query($sql)) {
+// 		$rows = array();
+// 		while($line = $result->fetch_assoc())
+// 		{
+//     		$rows[] = $client->request('InlineQueryResultArticle', [
+//     			'type' => 'article',
+//     			'id' => $line['id'],
+//     			'input_message_content' => $client->request('InputTextMessageContent', ['message_text' => $line['response']]), 
+//     			'title' => 'Nil'
+//     		]);
+//     	}
+//     	
+//     	$response = $client->request('answerInlineQuery', [
+//     		'inline_query_id' => $update->inline_query->id, 
+//     		'results' => $rows
+//     	]);
     }
     	
 }
