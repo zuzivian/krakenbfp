@@ -158,7 +158,7 @@ if ($chat_type == "private")
 				$msg = "Message ID: " . $id;
 				$msg .= "\nSubmitted by: " . $row['user_submit'];
 				$msg .= "\nTrigger word: " . $row['phrase'];
-				$msg .= "\nAttributed person: " . $row['user_atrrib'];
+				$msg .= "\nAttributed person: " . $row['user_attrib'];
 				$msg .= "\nMessage: " . $row['response'];
 			}
 			else
