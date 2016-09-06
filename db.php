@@ -137,9 +137,8 @@ function update_user_msg($conn, $user_submit, $id, $new_msg) {
 
 // updates the user attributed to a message. Returns 1 if successful.
 function update_user_attrib($conn, $user_submit, $id, $user_attrib) {
-	
-	$id = mysqli_real_escape_string($conn, $id);
-	$user_attrib = mysqli_real_escape_string($conn, $user_attrib);
+
+
 	// check if the editor is the wrightful owner of the message.
 	if (find_user_submit($conn, $id) == $user_submit) {
 		// if so update the message
