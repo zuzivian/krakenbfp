@@ -174,7 +174,17 @@ if ($chat_type == "private")
 			$search = substr($text, 6);
 			if ($id = find_id($conn, $search))
 			{
-				$msg = "The ID of that message is $id.";
+				if ($row = get_row($conn, $id)) {
+					$msg = "Message ID: " . $id;
+					$msg .= "\nSubmitted by: " . $row['user_submit'];
+					$msg .= "\nTrigger word: " . $row['phrase'];
+					$msg .= "\nAttributed person: " . $row['user_atrrib'];
+					$msg .= "\nMessage: " . $row['response'];
+				}
+				else
+				{
+					$msg = "No such message found.";
+				}
 			}
 			else
 			{
@@ -192,7 +202,17 @@ if ($chat_type == "private")
 		$search = $update->message->text;
 		if ($id = find_id($conn, $search))
 		{
-			$msg = "The ID of that message is $id.";
+			if ($row = get_row($conn, $id)) {
+				$msg = "Message ID: " . $id;
+				$msg .= "\nSubmitted by: " . $row['user_submit'];
+				$msg .= "\nTrigger word: " . $row['phrase'];
+				$msg .= "\nAttributed person: " . $row['user_atrrib'];
+				$msg .= "\nMessage: " . $row['response'];
+			}
+			else
+			{
+				$msg = "No such message found.";
+			}
 		}
 		else
 		{
@@ -312,38 +332,6 @@ if ($msg) {
 		'text' => $msg
  	]);
  }
-    
-
-
- 
-// //   -------------------
-// //   INLINE QUERY
-// //   -------------------
-// // This is where the bot's inline query logic resides.
-// 
-// if ($query = $update->inline_query->query) {
-// 	$sql = "SELECT id, response FROM kraken_msg LIMIT 5";
-// 	if ($result = $conn->query($sql)) {
-// 		$rows = array();
-// 		while($line = $result->fetch_assoc())
-// 		{
-//     		$rows[] = $client->request('InlineQueryResultArticle', [
-//     			'type' => 'article',
-//     			'id' => $line['id'],
-//     			'input_message_content' => $client->request('InputTextMessageContent', ['message_text' => $line['response']]), 
-//     			'title' => 'Nil'
-//     		]);
-//     	}
-//     	
-//     	$response = $client->request('answerInlineQuery', [
-//     		'inline_query_id' => $update->inline_query->id, 
-//     		'results' => $rows
-//     	]);
-//     }
-//     	
-// }
-
-
 
 
 // -------------------------    
