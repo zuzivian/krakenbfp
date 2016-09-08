@@ -183,7 +183,7 @@ if ($chat_type == "private")
 			if ($id = find_id($conn, $search))
 			{
 				$msg = display_id($conn, $id);
-			
+			}
 			else
 			{
 				$msg = "No such message found.";
@@ -263,7 +263,8 @@ else if (!$msg)
 			if (list($dbmsg) = db_query($conn, $sql)) 
 			{
 				$dbmsg = db_query($conn, $sql);
-				if ($chat_type != "private") {
+				if ($chat_type != "private") 
+             {
 					$msg = $reply_to_user;
 				}
 				$msg .= $dbmsg['response'];
