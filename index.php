@@ -210,7 +210,7 @@ if ($chat_type == "private")
 
 }
 
-else if (in_array($cmd, ['/find', '/id', '/addmsg', '/updatemsg', '/deletemsg', '/updatetrigger', '/updateattrib']))
+else if ( $cmd == '/find' || $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
 {
 	$msg = "@$user_submit, you'll want to use $cmd in a private chat with me.";
 }
