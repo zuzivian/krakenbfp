@@ -15,7 +15,23 @@ $client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5v
 $update = json_decode(file_get_contents('php://input'));
 
 
+// FUNCTIONS
 
+function display_id($conn, $id) {
+
+	if ($row = get_row($conn, $id)) {
+		$msg = "Message ID: " . $id;
+		$msg .= "\nSubmitted by: " . $row['user_submit'];
+		$msg .= "\nTrigger word: " . $row['phrase'];
+		$msg .= "\nAttributed person: " . $row['user_attrib'];
+		$msg .= "\nMessage: " . $row['response'];
+	}
+	else
+	{
+		$msg = "No such message found.";
+	}
+	return $msg;
+}
 
 //   -------------------
 //   MESSAGE PROCESSING
@@ -30,6 +46,7 @@ $words = explode(" ", $text);
 $cmd = $words[0];
 $user_submit = $update->message->from->username;
 $chat_type = $update->message->chat->type;
+$reply_to_user = "@" . $user_submit . " ";
 
 // The Bot now decides, based on the ruleset, on an appropriate response, or keeps quiet.
 
@@ -88,7 +105,7 @@ if ($chat_type == "private")
 			$id = intval($words[1]);
 			if (delete_msg($conn, $user_submit, $id)) 
 			{
-				$msg = "Your message has been removed from Kraken's database - if it is yours. (ID: $id)";
+				$msg = "Your message has been removed from Kraken's database. (ID: $id)";
 			}
 			else
 			{
@@ -153,18 +170,7 @@ if ($chat_type == "private")
 		}
 		else
 		{
-			$id = $words[1];
-			if ($row = get_row($conn, $id)) {
-				$msg = "Message ID: " . $id;
-				$msg .= "\nSubmitted by: " . $row['user_submit'];
-				$msg .= "\nTrigger word: " . $row['phrase'];
-				$msg .= "\nAttributed person: " . $row['user_attrib'];
-				$msg .= "\nMessage: " . $row['response'];
-			}
-			else
-			{
-				$msg = "Message with ID $id not found.";
-			}
+			$msg = display_id($conn, $id);
 		}
 	}
 	
@@ -174,18 +180,8 @@ if ($chat_type == "private")
 			$search = substr($text, 6);
 			if ($id = find_id($conn, $search))
 			{
-				if ($row = get_row($conn, $id)) {
-					$msg = "Message ID: " . $id;
-					$msg .= "\nSubmitted by: " . $row['user_submit'];
-					$msg .= "\nTrigger word: " . $row['phrase'];
-					$msg .= "\nAttributed person: " . $row['user_atrrib'];
-					$msg .= "\nMessage: " . $row['response'];
-				}
-				else
-				{
-					$msg = "No such message found.";
-				}
-			}
+				$msg = display_id($conn, $id);
+			
 			else
 			{
 				$msg = "No such message found.";
@@ -202,17 +198,7 @@ if ($chat_type == "private")
 		$search = $update->message->text;
 		if ($id = find_id($conn, $search))
 		{
-			if ($row = get_row($conn, $id)) {
-				$msg = "Message ID: " . $id;
-				$msg .= "\nSubmitted by: " . $row['user_submit'];
-				$msg .= "\nTrigger word: " . $row['phrase'];
-				$msg .= "\nAttributed person: " . $row['user_atrrib'];
-				$msg .= "\nMessage: " . $row['response'];
-			}
-			else
-			{
-				$msg = "No such message found.";
-			}
+			$msg = display_id($conn, $id);
 		}
 		else
 		{
@@ -222,7 +208,7 @@ if ($chat_type == "private")
 
 }
 
-else if ( $cmd == '/find' || $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
+else if (in_array($cmd, ['/find', '/id', '/addmsg', '/updatemsg', '/deletemsg', '/updatetrigger', '/updateattrib']))
 {
 	$msg = "@$user_submit, you'll want to use $cmd in a private chat with me.";
 }
@@ -248,6 +234,7 @@ if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot"))
 /updateattrib - Updates the person attributed to a msg
 /updatemsg - Updates a message
 /updatetrigger - Updates the word associated with a msg";
+
 }
 
 else if ($cmd == "/forward" || $cmd == "/forward@bfpbot")
@@ -275,7 +262,7 @@ else if (!$msg)
 			{
 				$dbmsg = db_query($conn, $sql);
 				if ($chat_type != "private") {
-					$msg = "@" . $update->message->from->username . " ";
+					$msg = $reply_to_user;
 				}
 				$msg .= $dbmsg['response'];
 				break;
@@ -301,7 +288,7 @@ else if (!$msg)
 	if (!$msg && rand(1,40) == 1) 
 	{
 		if ($chat_type != "private") {
-			$msg = "@" . $update->message->from->username . " ";
+			$msg = $reply_to_user;
 		}
 		$msg .= select_user_msg($conn, $user_submit);
 	}
