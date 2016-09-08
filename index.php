@@ -17,7 +17,8 @@ $update = json_decode(file_get_contents('php://input'));
 
 // FUNCTIONS
 
-function display_id($conn, $id) {
+function display_id($conn, $id) 
+{
 
 	if ($row = get_row($conn, $id)) {
 		$msg = "Message ID: " . $id;
@@ -170,7 +171,8 @@ if ($chat_type == "private")
 		}
 		else
 		{
-			$msg = display_id($conn, $id);
+			$id = $words[1];
+          $msg = display_id($conn, $id);
 		}
 	}
 	
