@@ -253,7 +253,7 @@ else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot")
 else if (!$msg)   
 {
 	// Check for any keywords listed in the text.
-	if (rand(1,3) <= 2 || $chat_type == "private")
+	if (rand(1,5) <= 2 || $chat_type == "private")
 	{
 
 		for ($i = 0; $words[$i]; $i++) 
