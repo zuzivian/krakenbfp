@@ -273,7 +273,7 @@ else if (!$msg)
 		}		
 	}
 	
-	if (!$msg && (rand(1,2) == 1 || $chat_type == "private"))
+	if (!$msg && (rand(1,4) == 1 || $chat_type == "private"))
 	{
 		for ($i = 0; $words[$i]; $i++) 
 		{
@@ -288,7 +288,7 @@ else if (!$msg)
 		}	
 	}
 
-	if (!$msg && rand(1,40) == 1) 
+	if (!$msg && rand(1,70) == 1) 
 	{
 		if ($chat_type != "private") {
 			$msg = $reply_to_user;
@@ -297,7 +297,7 @@ else if (!$msg)
 	}
 	
 	// If all else fails, rolls a dice to see if bot should keep quiet or spew nonsense.
-	if (!$msg && (rand(1,150) == 1 || $chat_type == "private") )
+	if (!$msg && (rand(1,300) == 1 || $chat_type == "private") )
 	{
 		$msg = select_random_msg($conn);
 	}
