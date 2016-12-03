@@ -67,7 +67,7 @@ class MessageProc
 		
 		$username = $user->username;
 		$phrase = $this->db->real_escape_string($phrase);
-		$sql = "SELECT * FROM kraken_msg WHERE user = '$user' AND phrase = '$phrase' ORDER BY RAND() LIMIT 1";
+		$sql = "SELECT * FROM kraken_msg WHERE user = '$username' AND phrase = '$phrase' ORDER BY RAND() LIMIT 1";
 		$res = $db->query($sql);
 		if ($this->msg = $res[0]) return true;
 		return false;
