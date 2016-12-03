@@ -27,20 +27,15 @@ class DatabaseResult {
 class Database {
 	
 	// Holds db stuff 
-	private $host = null;
-	private $user = null;
-	private $pass = null;
-	private $db = null;
-	
 	private $conn = null;
 	
 	public function __construct() {
 		$cleardb_info = parse_url(getenv("CLEARDB_DATABASE_URL"));
-		$this->host = $cleardb_info["host"];
-		$this->user = $cleardb_info["user"];
-		$this->pass = $cleardb_info["pass"];
-		$this->db = substr($cleardb_info["path"], 1);
-		$this->conn = new mysqli($host, $username, $password, $db);
+		$host = $cleardb_info["host"];
+		$user = $cleardb_info["user"];
+		$pass = $cleardb_info["pass"];
+		$db = substr($cleardb_info["path"], 1);
+		$this->conn = new mysqli($host, $user, $pass, $db);
 	}
 	
 	
