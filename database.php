@@ -35,10 +35,11 @@ class Database {
 	private $conn = null;
 	
 	public function __construct() {
-		$this->host = $dbhost;
-		$this->user = $dbuser;
-		$this->pass = $dbpass;
-		$this->$db = $db_db;
+		$cleardb_info = parse_url(getenv("CLEARDB_DATABASE_URL"));
+		$this->host = $cleardb_info["host"];
+		$this->user = $cleardb_info["user"];
+		$this->pass = $cleardb_info["pass"];
+		$this->db = substr($cleardb_info["path"], 1);
 	}
 	
 	public function connect() {
