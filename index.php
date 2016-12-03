@@ -89,9 +89,6 @@ if (!$msg && ($dice <= $chance_random || $chat_type == "private")) {
 if ($mode && !$msg) $msg = 'success!'; // for debugging purposes
 
 
-$db = new Database;
-$msg = $db->query('SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1');
-
 // Sends a message, if one has been identified
 if ($msg && !$mode) {
 	// Sends the "Typing..." action to Telegram
@@ -106,6 +103,15 @@ if ($msg && !$mode) {
 else {
 	echo "// Kraken 0.3-alpha // ";
 	echo $msg;
+	
+	$db = new Database;
+	$msgs = $db->query('SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1');
+	
+	foreach ($msgs as $msg) {
+	
+		echo "\n$msg";
+		
+	}
 }
 
 // -------------------------    
