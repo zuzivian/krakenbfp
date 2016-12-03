@@ -109,7 +109,7 @@ else {
 	
 	foreach ($msgs as $msg) {
 	
-		echo "\n$msg";
+		echo $msg;
 		
 	}
 }
