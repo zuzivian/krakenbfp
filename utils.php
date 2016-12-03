@@ -100,8 +100,7 @@ class AdminUtils
 	// Displays the details of a message, given its id.
 	public function display_msg($id) {
 		$proc = new MessageProc;
-		if ($proc->select_from_id($id)) {
-			$res = $proc->msg;
+		if ($res = $proc->select_from_id($id)) {
 			$msg = "Message ID: " . $id;
 			$msg .= "\nSubmitted by: " . $res['user_submit'];
 			$msg .= "\nTrigger word: " . $res['phrase'];
