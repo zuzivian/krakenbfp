@@ -90,8 +90,16 @@ if ($msg) {
      	'chat_id' => $update->message->chat->id,
 		'text' => $msg
  	]);
+ 	
+ 	
  }
 
+if ($mode != 0) {
+
+ echo 'Kraken 2.0-alpha \n\nMessage:';
+ echo $msg;
+
+}
 
 // -------------------------    
 // END OF SCRIPT. WOOHOO!

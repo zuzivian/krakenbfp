@@ -74,9 +74,9 @@ function commandproc($text, $user_submit, $chat_type) {
 				$attrib = $words[2];		
 				if ($utils->update_user_attrib($conn, $user_submit, $id, $attrib))  {
 					return success_msg('updateattrib',$id,$attrib);
-				} else {
-					return error_msg('updateattrib');
-				}
+				} 
+				else return error_msg('updateattrib');
+			}
 				
 			case '/id':
 			{
