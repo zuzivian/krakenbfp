@@ -82,13 +82,12 @@ function commandproc($text, $user_submit, $chat_type) {
 			{
 				if (count($words) != 2) return help_msg('id');
 				$id = intval($words[1]);
-				return $utils->display_user_msgs($user_submit, $id);			
+				return $utils->display_msg($id);			
 			}	
 			case '/find':
 			{
 				if (count($words) < 2) return help_msg('find');
 				$search = substr($text, 6);
-				$proc = new MessageProc;
 				if ($id = $proc->select_from_id($search))
 				{
 					return $utils->display_msg($id);

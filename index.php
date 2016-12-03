@@ -100,7 +100,7 @@ if ($msg && !$mode) {
  	]);	
 }
 else {
-	echo "Kraken 0.3-alpha // Message:";
+	echo "// Kraken 0.3-alpha // ";
 	echo $msg;
 }
 
