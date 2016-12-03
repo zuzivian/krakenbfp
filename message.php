@@ -5,8 +5,8 @@ require_once 'database.php';
 class MessageProc
 {
 	
-	static public $msg = null;
-	static public $db = null;
+	public $msg = null;
+	public $db = null;
 	
 	public function __construct() {
 		$this->db = new Database;
