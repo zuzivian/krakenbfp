@@ -46,6 +46,11 @@ class Database {
 		$conn = new mysqli($host, $username, $password, $db);
 	}
 	
+	
+	public function real_escape_string($str) {
+		return $this->conn->real_escape_string($str);
+	}	
+	
 	private function query($sql) {
 		
 		$this->connect();
