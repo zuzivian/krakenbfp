@@ -9,6 +9,10 @@ Version: 2.0-alpha
 */
 
 // DO NOT EDIT
+
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 require 'vendor/autoload.php';
 require_once 'utils.php';
 require_once 'commands.php';
