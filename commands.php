@@ -23,7 +23,7 @@ function commandproc($text, $user_submit, $chat_type) {
 		}
 	}
 	
-	if ($chat_type == private) {
+	if ($chat_type == 'private') {
 	
 		switch ($cmd) {
 		
@@ -109,7 +109,7 @@ function commandproc($text, $user_submit, $chat_type) {
 	
 	}
 
-	if (chat_type != 'private') {
+	if ($chat_type != 'private') {
 	
 		$arr1 = ['/find', '/id', '/addmsg', '/updatemsg', '/deletemsg', '/updatetrigger', '/updateattrib'];
 		$arr2 = ['/find@bfpbot', '/id@bfpbot', '/addmsg@bfpbot', '/updatemsg@bfpbot', '/deletemsg@bfpbot', '/updatetrigger@bfpbot', '/updateattrib@bfpbot'];
