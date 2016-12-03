@@ -47,7 +47,7 @@ if (!$msg && $chat_type == "private") {
 	
 }
 
-if (!$msg && mode == 0)
+if (!$msg && $mode == 0)
 {
 	$dice = rand(0,10000)/100;
 	
