@@ -17,7 +17,7 @@ class MessageProc
 	public function select_random()
 	{
 		$sql = "SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1";
-		$this->msg = $this->query($sql);
+		$this->msg = $this->db->query($sql);
 		if ($this->msg) return $this->msg;
 		return false;
 	}
@@ -48,7 +48,7 @@ class MessageProc
 		
 		$text = $db->real_escape_string($text);
 		$sql = "SELECT * FROM kraken_msg WHERE response = '$text' ORDER BY id LIMIT 1";
-		$res = $db->query($sql);
+		$res = $this->db->query($sql);
 		if ($this->msg = $res) return true;
 		return false;
 	}
