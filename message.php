@@ -27,7 +27,7 @@ class MessageProc
 		$db = new Database;	
 		$username = $user->id;
 		$sql = "SELECT * FROM kraken_msg WHERE user_attrib = '$username' ORDER BY RAND() LIMIT 1";
-		$res = $db->query($sql);
+		$res = $this->db->query($sql);
 		if ($this->msg = $res[0]) return true;
 		return false;
 	}
@@ -35,9 +35,9 @@ class MessageProc
 	// Finds  id of the given message. 
 	// If there are duplicates, the id of the most recent entry is given.
 	public function select_from_id($id) {
-		$id = $db->real_escape_string($id);
+		$id = $this->db->real_escape_string($id);
 		$sql = "SELECT * FROM kraken_msg WHERE id = '$id' LIMIT 1";		
-		$res = $db->query($sql);
+		$res = $this->db->query($sql);
 		if ($this->msg = $res[0]) return true;
 		return false;
 	}
@@ -56,9 +56,9 @@ class MessageProc
 		// Return the database message object from the text of the message
 	public function select_from_phrase($phrase) {
 		
-		$phrase = $db->real_escape_string($phrase);
+		$phrase = $this->db->real_escape_string($phrase);
 		$sql = "SELECT * FROM kraken_msg WHERE phrase = '$phrase' ORDER BY RAND() id LIMIT 1";
-		$res = $db->query($sql);
+		$res = $this->db->query($sql);
 		if ($this->msg = $res[0]) return true;
 		return false;
 	}
@@ -66,7 +66,7 @@ class MessageProc
 	public function select_from_user_phrase($user, $phrase) {
 		
 		$username = $user->username;
-		$phrase = $db->real_escape_string($phrase);
+		$phrase = $this->db->real_escape_string($phrase);
 		$sql = "SELECT * FROM kraken_msg WHERE user = '$user' AND phrase = '$phrase' ORDER BY RAND() LIMIT 1";
 		$res = $db->query($sql);
 		if ($this->msg = $res[0]) return true;
