@@ -4,15 +4,15 @@ require_once 'database.php';
 
 class User
 {
-	static public $id = null;
-	static public $first_name = null;
-	static public $last_name = null;
-	static public $username = null;
+	public $id = null;
+	public $first_name = null;
+	public $last_name = null;
+	public $username = null;
 	
-	public function __construct($user) {
-		$user->id = $this->id;
-		$user->first_name = $this->first_name;	
-		$user->last_name = $this->last_name;
-		$user->username = $this->username;
+	public function __construct($id, $first_name, $last_name, $username) {
+		$this->id = $id;
+		$this->first_name = $first_name;	
+		$this->last_name = $last_name;
+		$this->username = $username;
 	}
 }

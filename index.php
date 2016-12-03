@@ -17,6 +17,7 @@ require 'vendor/autoload.php';
 require_once 'utils.php';
 require_once 'commands.php';
 require_once 'config.php';
+require_once 'user.php';
 
 
 
@@ -31,7 +32,7 @@ if (!$mode) {
 }
 else {
 	$text = "Y'all are so damn rude";
-	$user_submit = 'shenying';
+	$user_submit = new User;
 	$chat_type = 'private';
 }
 
