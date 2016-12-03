@@ -40,10 +40,7 @@ class Database {
 		$this->user = $cleardb_info["user"];
 		$this->pass = $cleardb_info["pass"];
 		$this->db = substr($cleardb_info["path"], 1);
-	}
-	
-	public function connect() {
-		$conn = new mysqli($host, $username, $password, $db);
+		$this->conn = new mysqli($host, $username, $password, $db);
 	}
 	
 	
