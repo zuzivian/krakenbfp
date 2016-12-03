@@ -55,7 +55,7 @@ class Database {
 	public function query($sql) {
 		
 		$this->connect();
-		$res = $conn->query($sql);
+		$res = $this->conn->query($sql);
 		
 		if ($res) {
 			if (strpos($sql, 'SELECT') === FALSE) {
