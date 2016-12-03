@@ -38,7 +38,7 @@ class MessageProc
 		$id = $this->db->real_escape_string($id);
 		$sql = "SELECT * FROM kraken_msg WHERE id = '$id' LIMIT 1";		
 		$res = $this->db->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 
