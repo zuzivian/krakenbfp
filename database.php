@@ -52,7 +52,7 @@ class Database {
 		return $this->conn->real_escape_string($str);
 	}	
 	
-	private function query($sql) {
+	public function query($sql) {
 		
 		$this->connect();
 		$res = $conn->query($sql);
