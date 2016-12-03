@@ -18,18 +18,25 @@ require_once 'utils.php';
 require_once 'commands.php';
 require_once 'config.php';
 
-$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg');
-$update = json_decode(file_get_contents('php://input'));
 
 
 // Takes incoming message and breaks it down into an array of strings, $words
 
-$text = $update->message->text;
+if (!$mode) {
+	$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg');
+	$update = json_decode(file_get_contents('php://input'));
+	$text = $update->message->text;
+	$user_submit = $update->message->from;
+	$chat_type = $update->message->chat->type;
+}
+else {
+	$text = "Y'all are so damn rude";
+	$user_submit = 'shenying';
+	$chat_type = 'private';
+}
+
 $words = explode(" ", $text);
 $cmd = $words[0];
-$user_submit = $update->message->from;
-$chat_type = $update->message->chat->type;
-$reply_to_user = "@" . $user_submit . " ";
 
 $proc = new MessageProc;
 $utils = new AdminUtils;
