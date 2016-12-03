@@ -45,7 +45,7 @@ $utils = new AdminUtils;
 $msg = commandproc($text, $user_submit, $chat_type);
 
 //processes private messages
-if (!$msg && $chat_type == "private") {
+if (!$mode && !$msg && $chat_type == "private") {
 
 	if ($update->message->forward_from->username == 'bfpbot') 
 	{
