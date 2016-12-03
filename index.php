@@ -89,7 +89,7 @@ if (!$msg)
 if ($mode && !$msg) $msg = aha; // for debugging purposes
 
 // Sends a message, if one has been identified
-if ($msg) {
+if ($msg && !$mode) {
 	// Sends the "Typing..." action to Telegram
 	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
 	
@@ -97,16 +97,11 @@ if ($msg) {
 	$response = $client->sendMessage([
      	'chat_id' => $update->message->chat->id,
 		'text' => $msg
- 	]);
- 	
- 	
- }
-
-if ($mode) {
-
- echo "Kraken 0.3-alpha \n\nMessage:";
- echo $msg;
-
+ 	]);	
+}
+else {
+	echo "Kraken 0.3-alpha \n\nMessage:";
+	echo $msg;
 }
 
 // -------------------------    
