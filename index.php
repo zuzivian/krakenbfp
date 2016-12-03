@@ -47,7 +47,7 @@ if (!$msg && $chat_type == "private") {
 	
 }
 
-if (!$msg && $mode == 0)
+if (!$msg)
 {
 	$dice = rand(0,10000)/100;
 	
@@ -79,6 +79,7 @@ if (!$msg && $mode == 0)
 	}
 }
 
+if ($mode && !$msg) $msg = aha; // for debugging purposes
 
 // Sends a message, if one has been identified
 if ($msg) {
@@ -94,7 +95,7 @@ if ($msg) {
  	
  }
 
-if ($mode != 0) {
+if ($mode) {
 
  echo "Kraken 0.3-alpha \n\nMessage:";
  echo $msg;
