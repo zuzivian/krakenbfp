@@ -47,7 +47,6 @@ function commandproc($text, $user_submit, $chat_type) {
 					return success_msg('updatemsg', $id, $r);
 				}
 				else return error_msg('updatemsg');
-				}
 			}
 			
 			case '/deletemsg':
