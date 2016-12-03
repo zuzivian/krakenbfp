@@ -87,7 +87,7 @@ if (!$msg)
 	}
 }
 
-if ($mode && !$msg) $msg = aha; // for debugging purposes
+if ($mode && !$msg) $msg = 'success!'; // for debugging purposes
 
 // Sends a message, if one has been identified
 if ($msg && !$mode) {
