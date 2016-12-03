@@ -4,7 +4,7 @@
 --------------------------------------
 KRAKEN: A BFP BOT
 By: zuzivian
-Version: 2.0-alpha
+Version: 0.3-alpha
 --------------------------------------
 */
 
@@ -96,7 +96,7 @@ if ($msg) {
 
 if ($mode != 0) {
 
- echo 'Kraken 2.0-alpha \n\nMessage:';
+ echo "Kraken 0.3-alpha \n\nMessage:";
  echo $msg;
 
 }

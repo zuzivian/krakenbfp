@@ -27,10 +27,10 @@ class DatabaseResult {
 class Database {
 	
 	// Holds db stuff 
-	static private $host = null;
-	static private $user = null;
-	static private $pass = null;
-	static private $db = null;
+	private $host = null;
+	private $user = null;
+	private $pass = null;
+	private $db = null;
 	
 	private $conn = null;
 	
