@@ -35,15 +35,16 @@ class Database {
 	private $conn = null;
 	
 	public function __construct() {
-		$cleardb_info = parse_url(getenv("CLEARDB_DATABASE_URL"));
-		$this->host = $cleardb_info["host"];
-		$this->user = $cleardb_info["user"];
-		$this->pass = $cleardb_info["pass"];
-		$this->db = substr($cleardb_info["path"], 1);
+		$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+		$this->host = $url["host"];
+		$this->user = $url["user"];
+		$this->pass = $url["pass"];
+		$this->db = substr($url["path"], 1);
 	}
 	
 	public function connect() {
-		$this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
+		$this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db)
+			or die ("<br/>Could not connect to MySQL server");;
 	}
 	
 	
