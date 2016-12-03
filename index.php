@@ -32,7 +32,7 @@ if (!$mode) {
 }
 else {
 	$text = "Y'all are so damn rude";
-	$user_submit = new User;
+	$user_submit = new User(1234,'Shen Ying','Gan','shenying');
 	$chat_type = 'private';
 }
 
