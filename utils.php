@@ -103,10 +103,10 @@ class AdminUtils
 		$proc->select_from_id($id);
 		if ($res = $proc->msg) {
 			$msg = "Message ID: " . $id;
-			$msg .= "\nSubmitted by: " . $res['user_submit'];
-			$msg .= "\nTrigger word: " . $res['phrase'];
-			$msg .= "\nAttributed to: " . $res['user_attrib'];
-			$msg .= "\nMessage: " . $res['response'];
+			$msg .= "\nSubmitted by: " . $res[0]['user_submit'];
+			$msg .= "\nTrigger word: " . $res[0]['phrase'];
+			$msg .= "\nAttributed to: " . $res[0]['user_attrib'];
+			$msg .= "\nMessage: " . $res[0]['response'];
 		}
 		else
 		{

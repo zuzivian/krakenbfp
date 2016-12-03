@@ -18,7 +18,7 @@ class MessageProc
 	{
 		$sql = "SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1";
 		$res = $this->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 	
@@ -28,7 +28,7 @@ class MessageProc
 		$username = $user->id;
 		$sql = "SELECT * FROM kraken_msg WHERE user_attrib = '$username' ORDER BY RAND() LIMIT 1";
 		$res = $this->db->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 	
@@ -49,7 +49,7 @@ class MessageProc
 		$text = $db->real_escape_string($text);
 		$sql = "SELECT * FROM kraken_msg WHERE response = '$text' ORDER BY id LIMIT 1";
 		$res = $db->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 	
@@ -59,7 +59,7 @@ class MessageProc
 		$phrase = $this->db->real_escape_string($phrase);
 		$sql = "SELECT * FROM kraken_msg WHERE phrase = '$phrase' ORDER BY RAND() id LIMIT 1";
 		$res = $this->db->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 	
@@ -69,7 +69,7 @@ class MessageProc
 		$phrase = $this->db->real_escape_string($phrase);
 		$sql = "SELECT * FROM kraken_msg WHERE user = '$username' AND phrase = '$phrase' ORDER BY RAND() LIMIT 1";
 		$res = $this->db->query($sql);
-		if ($this->msg = $res[0]) return true;
+		if ($this->msg = $res) return true;
 		return false;
 	}
 	
