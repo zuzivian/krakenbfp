@@ -18,7 +18,7 @@ class MessageProc
 	{
 		$sql = "SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1";
 		$this->msg = $this->db->query($sql);
-		if ($this->msg) return true;
+		if ($this->msg) return $this->msg;
 		return false;
 	}
 	
