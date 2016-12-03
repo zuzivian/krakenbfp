@@ -80,5 +80,5 @@ function error_msg($cmd) {
 			return "You'll want to use $cmd in a private chat with me.";
 		default:
 			return;
-
+	}
 }
