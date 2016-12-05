@@ -103,15 +103,6 @@ if ($msg && !$mode) {
 else {
 	echo "// Kraken 0.3-alpha // ";
 	echo $msg;
-	
-	$db = new Database;
-	$msgs = $db->query("SELECT * FROM 'kraken_msg' ORDER BY RAND() LIMIT 1");
-	echo $msgs;
-	foreach ($msgs as $msg) {
-	
-		echo $msg;
-		
-	}
 }
 
 // -------------------------    
