@@ -25,8 +25,7 @@ class AdminUtils
 		if ($db->query($sql) === TRUE) 
 		{
 			$msgproc = new MessageProc;
-			$msgproc->select_from_msg($msg);
-			return $msgproc->msg->id;
+			return $msgproc->select_from_msg($msg)->id;
 		} 
 		return false;
 	
