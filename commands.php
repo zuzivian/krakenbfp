@@ -32,8 +32,8 @@ function commandproc($text, $user_submit, $chat_type) {
 				if (count($words) == 1) return help_msg('addmsg');
 				$r1 = substr(strstr($text," "), 1);
 				if ($proc->select_from_msg($r1)) return error_msg('addmsg');
-				$id = $utils->add_msg($r, $user_submit);
-				return success_msg('addmsg', $id, $r);
+				$id = $utils->add_msg($r1, $user_submit);
+				return success_msg('addmsg', $id, $r1);
 			}
 	
 			case '/updatemsg':
@@ -43,8 +43,8 @@ function commandproc($text, $user_submit, $chat_type) {
 				$r1 = str_replace("/updatemsg", "", $text);
 				$r2 = str_replace($id, "", $r1);
 				$r3 = str_replace("  ", "", $r2);
-				if ($utils->update_msg($user_submit, $id, $r)) {
-					return success_msg('updatemsg', $id, $r);
+				if ($utils->update_msg($user_submit, $id, $r3)) {
+					return success_msg('updatemsg', $id, $r3);
 				}
 				else return error_msg('updatemsg');
 			}
@@ -62,7 +62,7 @@ function commandproc($text, $user_submit, $chat_type) {
 				if (count($words) != 3) return help_msg('updatetrigger');
 				$id = intval($words[1]);
 				$phrase = $words[2];
-				if ($utils->update_phrase($conn, $user_submit, $id, $phrase)) { 
+				if ($utils->update_phrase($user_submit, $id, $phrase)) { 
 					return success_msg('updatetrigger',$id,$phrase);
 				}
 				else return error_msg('updatetrigger');
@@ -72,7 +72,8 @@ function commandproc($text, $user_submit, $chat_type) {
 				if (count($words) != 3) return help_msg('updateattrib');
 				$id = intval($words[1]);
 				$attrib = $words[2];		
-				if ($utils->update_user_attrib($conn, $user_submit, $id, $attrib))  {
+				if ($utils->update_user_attrib($user_submit, $id, $attrib))  
+				{
 					return success_msg('updateattrib',$id,$attrib);
 				} 
 				else return error_msg('updateattrib');
