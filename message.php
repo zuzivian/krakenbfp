@@ -43,7 +43,7 @@ class MessageProc
 	}
 
 	
-	// Return the database message object from the text of the message
+	// Returns the DatabaseResult object that corresponds to text
 	public function select_from_msg($text) {
 		
 		$text = $db->real_escape_string($text);
@@ -52,6 +52,17 @@ class MessageProc
 		if ($this->msg->id) return $this->msg;
 		return false;
 	}
+	
+	// Returns the DatabaseResult object that corresponds to text
+	public function search_msg($text) {
+		
+		$text = $db->real_escape_string($text);
+		$sql = "SELECT * FROM kraken_msg WHERE response LIKE '%$text%' ORDER BY id LIMIT 1";
+		$this->msg = $this->db->query($sql)[0];
+		if ($this->msg->id) return $this->msg;
+		return false;
+	}	
+	
 	
 		// Return the database message object from the text of the message
 	public function select_from_phrase($phrase) {
