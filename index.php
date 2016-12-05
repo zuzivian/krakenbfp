@@ -12,9 +12,11 @@ Version: 0.3-alpha
 
 require 'vendor/autoload.php';
 
-if (!$mode) {
+$update = json_decode(file_get_contents('php://input'));
+
+if (!$mode && $update) {
 	$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg');
-	$update = json_decode(file_get_contents('php://input'));
+	
 	$text = $update->message->text;
 	$user_submit = $update->message->from;
 	$chat_type = $update->message->chat->type;
