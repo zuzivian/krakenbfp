@@ -11,6 +11,10 @@ Version: 0.3-alpha
 // DO NOT EDIT
 
 require 'vendor/autoload.php';
+require_once 'utils.php';
+require_once 'commands.php';
+require_once 'config.php';
+require_once 'user.php';
 
 $update = json_decode(file_get_contents('php://input'));
 
@@ -29,10 +33,7 @@ else {
 	$chat_type = 'private';
 }
 
-require_once 'utils.php';
-require_once 'commands.php';
-require_once 'config.php';
-require_once 'user.php';
+
 
 
 
