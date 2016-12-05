@@ -9,4 +9,4 @@ $mode = 0;
 $chance_user_phrase = 0;
 $chance_phrase = 40;
 $chance_user = 20;
-$chance_random = 1.5;
+$chance_random = 0.7;
