@@ -68,8 +68,12 @@ class AdminUtils
 	public function update_user_attrib($user_submit, $id, $user_attrib) {
 
 		$user_attrib = $db->real_escape_string($user_attrib);
+		$firstchar = substr($user_attrib, 0,1);
+		if ($firstchar == '@') {
+			$user_attrib = substr($user_attrib, 1);
+		}
 		$id = $db->real_escape_string($id);
-		// check if the editor is the wrightful owner of the message.
+		// check if the editor is the rightful owner of the message.
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
 		if ($msgproc->msg->user_submit == $user_submit) {
