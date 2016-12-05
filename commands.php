@@ -89,7 +89,7 @@ function commandproc($text, $user_submit, $chat_type) {
 			{
 				if (count($words) < 2) return help_msg('find');
 				$search = substr($text, 6);
-				if ($id = $proc->select_from_id($search))
+				if ($id = $proc->select_from_msg($search))
 				{
 					return $utils->display_msg($id);
 				}
