@@ -52,6 +52,11 @@ class Database {
 		$this->connect();
 		return $this->conn->real_escape_string($str);
 	}	
+
+	public function escape_string($str) {
+		$this->connect();
+		return $this->conn->escape_string($str);
+	}	
 	
 	public function query($sql) {
 		

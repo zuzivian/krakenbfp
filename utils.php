@@ -140,7 +140,7 @@ class AdminUtils
 	// Processes a forwarded message and returns the appropriate message.
 	public function forwarded_msg($text) {
 
-		if ($proc->select_from_msg($text)) 
+		if ($proc->select_from_msg($text) == TRUE)
 		{
 			return $this->display_msg($proc->msg->id);
 		}
