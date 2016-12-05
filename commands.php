@@ -62,7 +62,8 @@ function commandproc($text, $user_submit, $chat_type) {
 				if (count($words) != 3) return help_msg('updatetrigger');
 				$id = intval($words[1]);
 				$phrase = $words[2];
-				if ($utils->update_phrase($user_submit, $id, $phrase)) { 
+				if ($utils->update_phrase($user_submit, $id, $phrase)) 
+				{ 
 					return success_msg('updatetrigger',$id,$phrase);
 				}
 				else return error_msg('updatetrigger');
