@@ -20,8 +20,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
@@ -34,8 +34,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
@@ -48,8 +48,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
@@ -63,8 +63,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
@@ -77,8 +77,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}	
@@ -92,8 +92,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
@@ -106,8 +106,8 @@ class MessageProc
 		$res = $this->db->query($sql);
 		$this->msg = $res[0];
 		if ($res) {
-			$this->msg = res[0];
-			return res[0];
+			$this->msg = $res[0];
+			return $res[0];
 		}
 		return false;
 	}
