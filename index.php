@@ -104,7 +104,7 @@ if ($msg && $update) {
  	]);	
 }
 else {
-	echo '\n\n' . "// Kraken 0.3-alpha // ";
+	echo "\n\n// Kraken 0.3-alpha // ";
 	echo $msg;
 }
 
