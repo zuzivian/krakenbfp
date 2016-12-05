@@ -51,7 +51,7 @@ $utils = new AdminUtils;
 $msg = commandproc($text, $user_submit, $chat_type);
 
 //processes private messages
-if (!$mode && !$msg && $chat_type == "private") {
+if ($update && !$msg && $chat_type == "private") {
 
 	if ($update->message->forward_from->username == 'bfpbot') 
 	{
@@ -79,7 +79,7 @@ if (!$msg && ($dice <= $chance_phrase || $chat_type == "private")) {
 	}
 }	
 if (!$msg && ($dice <= $chance_user || $chat_type == "private")) {
-	if($proc->select_from_user($user_submit)) {
+	if($proc->select_from_attrib($user_submit)) {
 		$msg = $proc->msg->response;
 	}	
 }
