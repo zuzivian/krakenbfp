@@ -12,7 +12,7 @@ class DatabaseResult {
   	public function __construct(){}
 
 	public function __set($var,$val){	
-		$this->results[$var] = $val;
+		$this->_results[$var] = $val;
 	}
  
 	public function __get($var){  
