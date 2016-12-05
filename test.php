@@ -15,7 +15,7 @@ $msgs = $db->query("SELECT * FROM kraken_msg ORDER BY RAND() LIMIT 1");
 
 foreach ($msgs as $msg) {
 
-	echo $msg;
+	echo $k->response;
 	
 }
 
