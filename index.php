@@ -93,7 +93,7 @@ if ($mode && !$msg) $msg = 'success!'; // for debugging purposes
 
 
 // Sends a message, if one has been identified
-if ($msg && !$mode) {
+if ($msg && $update) {
 	// Sends the "Typing..." action to Telegram
 	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
 	
