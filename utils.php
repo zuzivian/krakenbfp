@@ -42,7 +42,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so delete the row
 			$sql = "DELETE FROM kraken_msg WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -58,7 +58,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET response = '$new_msg' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -75,7 +75,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET user_attrib = '$user_attrib' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -92,7 +92,7 @@ class AdminUtils
 			$phrase = strtolower($phrase);
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -102,10 +102,10 @@ class AdminUtils
 		$proc = new MessageProc;
 		if ($res = $proc->select_from_id($id)) {
 			$msg = "Message ID: " . $id;
-			$msg .= "\nSubmitted by: " . $res['user_submit'];
-			$msg .= "\nTrigger word: " . $res['phrase'];
-			$msg .= "\nAttributed to: " . $res['user_attrib'];
-			$msg .= "\nMessage: " . $res['response'];
+			$msg .= "\nSubmitted by: " . $res->user_submit;
+			$msg .= "\nTrigger word: " . $res->phrase;
+			$msg .= "\nAttributed to: " . $res->user_attrib;
+			$msg .= "\nMessage: " . $res->response;
 		}
 		else
 		{
@@ -127,7 +127,7 @@ class AdminUtils
 		if($rows = $this->select_from_submitter($user_submit)) {
 			$msg .= "\n\nHere are the messages that you have already added:\nID / trigger / attrib";
 			foreach ($rows as $row) {
-				$msg .=  "\n" . $row['id'] . " / " . $row['phrase'] . " / " . $row['user_attrib'];
+				$msg .=  "\n" . $row->id . " / " . $row->phrase . " / " . $row->user_attrib;
 			}
 			return $msg;
 		}
@@ -139,7 +139,7 @@ class AdminUtils
 
 		if ($proc->select_from_msg($text)) 
 		{
-			return $utils->display_msg($id);
+			return $this->display_msg($proc->msg->id);
 		}
 		else return error_msg('notfound');
 	}
