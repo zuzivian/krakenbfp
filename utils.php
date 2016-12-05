@@ -22,7 +22,7 @@ class AdminUtils
 		$phrase = strtolower($phrase);						
 		$sql = "INSERT INTO kraken_msg VALUES ('', '', '$phrase','$msg', '$submit', '$attrib')";
 		
-		if ($db->query($sql)) 
+		if ($db->query($sql) === TRUE) 
 		{
 			$msgproc = new MessageProc;
 			return $msgproc->select_from_msg($msg)->id;
@@ -41,7 +41,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so delete the row
 			$sql = "DELETE FROM kraken_msg WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -57,7 +57,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET response = '$new_msg' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -78,7 +78,7 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET user_attrib = '$user_attrib' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -95,7 +95,7 @@ class AdminUtils
 			$phrase = strtolower($phrase);
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
-			return $db->query($sql);
+			return $db->query($sql)[0];
 		}
 		else return false; //fail
 	}
@@ -121,17 +121,13 @@ class AdminUtils
 	public function select_from_submitter($user) {	
 		$username = $user->username;
 		$sql = "SELECT * FROM kraken_msg WHERE user_submit = '$username' ORDER BY id";
-		$res = $db->query($sql);
-		if ($res) return $res;
-		else return false;
+		return $db->query($sql);
 	}
 	
 	// provides a list of messages belonging to user_submit
 	public function display_user_msgs($user_submit, $id='') {
 		$proc = new MessageProc;
-		$rows = $this->select_from_submitter($user_submit)
-		if(rows) 
-		{
+		if($rows = $this->select_from_submitter($user_submit)) {
 			$msg .= "\n\nHere are the messages that you have already added:\nID / trigger / attrib";
 			foreach ($rows as $row) {
 				$msg .=  "\n" . $row->id . " / " . $row->phrase . " / " . $row->user_attrib;
@@ -144,7 +140,7 @@ class AdminUtils
 	// Processes a forwarded message and returns the appropriate message.
 	public function forwarded_msg($text) {
 
-		if ($proc->select_from_msg($text))
+		if ($proc->select_from_msg($text) == TRUE)
 		{
 			return $this->display_msg($proc->msg->id);
 		}
