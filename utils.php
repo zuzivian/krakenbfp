@@ -1,5 +1,6 @@
 <?php
 
+require_once 'database.php';
 require_once 'message.php';
 
 class AdminUtils
@@ -16,7 +17,7 @@ class AdminUtils
 	public function add_msg($msg, $submit, $phrase = '', $attrib = '') 
 	{
 		$msg = $db->real_escape_string($msg);
-		$attrib = $db->real_escape_string($atrib);
+		$attrib = $db->real_escape_string($attrib);
 		$submit = $db->real_escape_string($submit);
 		$phrase = $db->real_escape_string($phrase);
 		$phrase = strtolower($phrase);						
