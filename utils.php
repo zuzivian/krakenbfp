@@ -58,9 +58,9 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET response = '$new_msg' WHERE id = $id";
-			return $this->db->query($sql)[0];
+			return $this->db->query($sql);
 		}
-		else return false; //fail
+		return false; //fail
 	}
 	
 	
@@ -79,9 +79,9 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET user_attrib = '$user_attrib' WHERE id = $id";
-			return $this->db->query($sql)[0];
+			return $this->db->query($sql);
 		}
-		else return false; //fail
+		return false; //fail
 	}
 
 
@@ -96,9 +96,9 @@ class AdminUtils
 			$phrase = strtolower($phrase);
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
-			return $this->db->query($sql)[0];
+			return $this->db->query($sql);
 		}
-		else return false; //fail
+		return false; //fail
 	}
 	
 	// Displays the details of a message, given its id.
