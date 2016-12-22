@@ -9,7 +9,7 @@ class AdminUtils
 	public $db = null;
 	
 	public function __construct() {
-		$db = new Database;
+		$this->db = new Database;
 	}
 	
 	// Adds a new message (and submitting username) to the database, 
