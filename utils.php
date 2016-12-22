@@ -35,10 +35,10 @@ class AdminUtils
 	
 	// Deletes an entire message.
 	public function delete_msg($user_submit, $id) {
-		$id = $this->db->real_escape_string($conn, $id);
+		$id = $this->db->real_escape_string($id);
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
-		// check if the editor is the wrightful owner of the message.
+		// check if the editor is the rightful owner of the message.
 		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so delete the row
 			$sql = "DELETE FROM kraken_msg WHERE id = $id";
