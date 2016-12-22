@@ -42,9 +42,9 @@ class AdminUtils
 		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so delete the row
 			$sql = "DELETE FROM kraken_msg WHERE id = $id";
-			return $this->db->query($sql)[0];
+			return $this->db->query($sql);
 		}
-		else return false; //fail
+		return false; //fail
 	}
 	
 	
