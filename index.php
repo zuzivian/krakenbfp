@@ -60,9 +60,11 @@ if ($update && !$msg && $chat_type == "private") {
 	
 }
 
-$dice = rand(0,10000)/100;
+function dice() {
+	return rand(0,10000)/100;
+}
 
-if (!$msg && ($dice <= $chance_user_phrase)) {
+if (!$msg && (dice() <= $chance_user_phrase)) {
 	foreach ($words as $word) {
 		if($proc->select_from_user_phrase($user_submit,$word)) {
 			$msg = $proc->msg->response;
@@ -70,7 +72,7 @@ if (!$msg && ($dice <= $chance_user_phrase)) {
 		}
 	}
 }	
-if (!$msg && ($dice <= $chance_phrase)) {
+if (!$msg && (dice() <= $chance_phrase)) {
 	foreach ($words as $word) {
 		if($proc->select_from_phrase($word)) {
 			$msg = $proc->msg->response;
@@ -78,12 +80,12 @@ if (!$msg && ($dice <= $chance_phrase)) {
 		}
 	}
 }	
-if (!$msg && ($dice <= $chance_user)) {
+if (!$msg && (dice() <= $chance_user)) {
 	if($proc->select_from_attrib($user_submit)) {
 		$msg = $proc->msg->response;
 	}	
 }
-if (!$msg && ($dice <= $chance_random || $chat_type == "private")) {
+if (!$msg && (dice() <= $chance_random || $chat_type == "private")) {
 	if($proc->select_random()) {
 		$msg = $proc->msg->response;
 	}
