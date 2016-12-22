@@ -128,7 +128,7 @@ class AdminUtils
 	// provides a list of messages belonging to user_submit
 	public function display_user_msgs($user_submit) {
 		$proc = new MessageProc;
-		if($rows = $this->select_from_submitter($user_submit->username)) {
+		if($rows = $this->select_from_submitter($user_submit)) {
 			$msg .= "\n\nHere are the messages that you have already added:\nID / trigger / attrib";
 			foreach ($rows as $row) {
 				$msg .=  "\n" . $row->id . " / " . $row->phrase . " / " . $row->user_attrib;
