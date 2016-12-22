@@ -27,7 +27,6 @@ class MessageProc
 	
 	// gets a messages given a telegram username
 	public function select_from_attrib($user) {
-		$db = new Database;	
 		$username = $user->id;
 		$sql = "SELECT * FROM kraken_msg WHERE user_attrib = '$username' ORDER BY RAND() LIMIT 1";
 		$res = $this->db->query($sql);
@@ -55,7 +54,7 @@ class MessageProc
 	// Returns the DatabaseResult object that corresponds to text
 	public function select_from_msg($text) {
 		
-		$text = $db->real_escape_string($text);
+		$text = $this->db->real_escape_string($text);
 		$sql = "SELECT * FROM kraken_msg WHERE response = '$text' ORDER BY id LIMIT 1";
 		$res = $this->db->query($sql);
 		if ($res) {
@@ -68,7 +67,7 @@ class MessageProc
 	// Returns the DatabaseResult object that corresponds to text
 	public function search_msg($text) {
 		
-		$text = $db->real_escape_string($text);
+		$text = $this->db->real_escape_string($text);
 		$sql = "SELECT * FROM kraken_msg WHERE response LIKE '%$text%' ORDER BY id LIMIT 1";
 		$res = $this->db->query($sql);
 		if ($res) {
