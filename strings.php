@@ -34,12 +34,12 @@ function help_msg($cmd) {
 	case 'forward':
 		return "Forward me any of my own messages and I will try to find its details for you.";
 	default:
-		return;
+		return 'Error 10: Help msg not found';
 	}
 }
 
 //success messages
-function success_msg($cmd, $id='', $r='') {
+function success_msg($cmd, $id=' ', $r=' ') {
 	
 	switch ($cmd) {
 	
@@ -54,7 +54,7 @@ function success_msg($cmd, $id='', $r='') {
 		case 'updateattrib':
 			return "Your user attrib has been updated. (ID: $id, attrib: $r)";
 		default:
-			return;
+			return 'Error 11: Success msg not found';
 					
 	}
 }
@@ -79,6 +79,6 @@ function error_msg($cmd) {
 		case 'private':
 			return "You'll want to use $cmd in a private chat with me.";
 		default:
-			return;
+			return 'Error 12: Error msg not found';
 	}
 }
