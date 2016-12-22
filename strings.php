@@ -78,6 +78,8 @@ function error_msg($cmd) {
 			return "No such message found.";
 		case 'private':
 			return "You'll want to use $cmd in a private chat with me.";
+		case 'error':
+			return "Error performing your request.";
 		default:
 			return 'Error 12: Error msg not found';
 	}

@@ -31,9 +31,10 @@ function commandproc($text, $user_submit, $chat_type) {
 			{
 				if (count($words) == 1) return help_msg('addmsg');
 				$r1 = substr(strstr($text," "), 1);
-				if ($proc->select_from_msg($r1)) return error_msg('addmsg');
+				if ($proc->select_from_msg($r1)->response) return error_msg('addmsg');
 				$id = $utils->add_msg($r1, $user_submit);
-				return success_msg('addmsg', $id, $r1);
+				if ($id) return success_msg('addmsg', $id, $r1);
+				return error_msg('error');
 			}
 	
 			case '/updatemsg':
