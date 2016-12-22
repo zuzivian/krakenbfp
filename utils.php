@@ -21,7 +21,7 @@ class AdminUtils
 		$submit = $db->real_escape_string($submit);
 		$phrase = $db->real_escape_string($phrase);
 		$phrase = strtolower($phrase);						
-		$sql = "INSERT INTO kraken_msg VALUES ('', '', '$phrase','$msg', '$submit', '$attrib')";
+		$sql = "INSERT INTO kraken_msg (phrase, response, user_submit, user_attrib) VALUES ('$phrase','$msg', '$submit', '$attrib')";
 		
 		if ($db->query($sql) === TRUE) 
 		{
