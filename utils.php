@@ -16,10 +16,10 @@ class AdminUtils
 	// returns the id of the row if succesful.
 	public function add_msg($msg, $submit, $phrase = '', $attrib = '') 
 	{
-		$msg = $db->real_escape_string($msg);
-		$attrib = $db->real_escape_string($attrib);
-		$submit = $db->real_escape_string($submit);
-		$phrase = $db->real_escape_string($phrase);
+// 		$msg = $db->real_escape_string($msg);
+// 		$attrib = $db->real_escape_string($attrib);
+// 		$submit = $db->real_escape_string($submit);
+// 		$phrase = $db->real_escape_string($phrase);
 		$phrase = strtolower($phrase);						
 		$sql = "INSERT INTO kraken_msg (phrase, response, user_submit, user_attrib) VALUES ('$phrase','$msg', '$submit', '$attrib')";
 		
