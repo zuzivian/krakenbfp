@@ -82,6 +82,12 @@ function commandproc($text, $user_submit, $chat_type) {
 				
 			case '/id':
 			{
+				if (count($words) == 1) 
+				{
+					$msg = help_msg(id);
+					$msg .= $utils->display_user_msgs($user_submit);
+					return $msg;
+				}
 				if (count($words) != 2) return help_msg('id');
 				$id = intval($words[1]);
 				return $utils->display_msg($id);			
