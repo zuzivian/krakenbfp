@@ -18,7 +18,7 @@ class AdminUtils
 	{
  		$msg = $this->db->real_escape_string($msg);
  		$attrib = $this->db->real_escape_string($attrib);
- 		$submit = $this->db->real_escape_string($submit);
+ 		$submit = $this->db->real_escape_string($submit->username);
  		$phrase = $this->db->real_escape_string($phrase);
 		$phrase = strtolower($phrase);						
 		$sql = "INSERT INTO kraken_msg (phrase, response, user_submit, user_attrib) VALUES ('$phrase','$msg', '$submit', '$attrib')";
@@ -39,7 +39,7 @@ class AdminUtils
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
 		// check if the editor is the wrightful owner of the message.
-		if ($msgproc->msg->user_submit == $user_submit) {
+		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so delete the row
 			$sql = "DELETE FROM kraken_msg WHERE id = $id";
 			return $this->db->query($sql)[0];
@@ -55,7 +55,7 @@ class AdminUtils
 		// check if the editor is the rightful owner of the message.
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
-		if ($msgproc->msg->user_submit == $user_submit) {
+		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET response = '$new_msg' WHERE id = $id";
 			return $this->db->query($sql)[0];
@@ -76,7 +76,7 @@ class AdminUtils
 		// check if the editor is the rightful owner of the message.
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
-		if ($msgproc->msg->user_submit == $user_submit) {
+		if ($msgproc->msg->user_submit == $user_submit->username) {
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET user_attrib = '$user_attrib' WHERE id = $id";
 			return $this->db->query($sql)[0];
@@ -92,7 +92,7 @@ class AdminUtils
 		// check if the editor is the rightful owner of the message.
 		$msgproc = new MessageProc;
 		$msgproc->select_from_id($id);
-		if ($msgproc->msg->user_submit == $user_submit) {
+		if ($msgproc->msg->user_submit == $user_submit->username) {
 			$phrase = strtolower($phrase);
 			// if so update the message
 			$sql = "UPDATE kraken_msg SET phrase = '$phrase' WHERE id = $id";
@@ -128,7 +128,7 @@ class AdminUtils
 	// provides a list of messages belonging to user_submit
 	public function display_user_msgs($user_submit) {
 		$proc = new MessageProc;
-		if($rows = $this->select_from_submitter($user_submit)) {
+		if($rows = $this->select_from_submitter($user_submit->username)) {
 			$msg .= "\n\nHere are the messages that you have already added:\nID / trigger / attrib";
 			foreach ($rows as $row) {
 				$msg .=  "\n" . $row->id . " / " . $row->phrase . " / " . $row->user_attrib;
