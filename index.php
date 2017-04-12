@@ -270,6 +270,10 @@ else if (!$msg)
 				$msg .= $dbmsg['response'];
 				break;
 			}
+			else
+			{
+				$msg = 'tset';
+			}
 		}		
 	}
 	
