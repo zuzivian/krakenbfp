@@ -57,7 +57,7 @@ if ($cmd == '/huggles')
 	$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
 }
 
-if ($!msg && $chat_type == "private") 
+if (!$msg && $chat_type == "private") 
 {
 	if ($cmd == '/addmsg')
 	{
