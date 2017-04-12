@@ -110,6 +110,10 @@ function commandproc($text, $user_submit, $chat_type) {
 			{
 				return help_msg('help');
 			}
+			case '/huggles':
+			{
+				return 'http://upload.storiesspace.com/192-huggles1em6.jpg':
+			}
 		
 		}	
 	
