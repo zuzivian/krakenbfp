@@ -52,7 +52,12 @@ $reply_to_user = "@" . $user_submit . " ";
 // The Bot now decides, based on the ruleset, on an appropriate response, or keeps quiet.
 
 
-if ($chat_type == "private") 
+if ($cmd == '/huggles')
+{
+	$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
+}
+
+if ($!msg && $chat_type == "private") 
 {
 	if ($cmd == '/addmsg')
 	{
@@ -208,11 +213,6 @@ if ($chat_type == "private")
 		}
 	}
 
-}
-
-else if ($cmd == '/huggles')
-{
-	$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
 }
 
 else if ( $cmd == '/find' || $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
