@@ -18,7 +18,7 @@ require_once 'user.php';
 
 $update = json_decode(file_get_contents('php://input'));
 
-if (!$mode && $update->message->text) {
+if (!$mode && $update) {
 	$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg');
 	
 	$text = $update->message->text;
@@ -95,7 +95,7 @@ if ($mode && !$msg) $msg = 'success!'; // for debugging purposes
 
 
 // Sends a message, if one has been identified
-if ($msg && $update->message->text) {
+if ($msg) {
 	// Sends the "Typing..." action to Telegram
 	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
 	
