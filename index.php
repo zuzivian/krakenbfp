@@ -52,7 +52,7 @@ $reply_to_user = "@" . $user_submit . " ";
 // The Bot now decides, based on the ruleset, on an appropriate response, or keeps quiet.
 
 
-if ($cmd == '/huggles')
+if ($cmd == '/huggles' || $cmd == '/huggles@bfpbot')
 {
 	$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
 }
