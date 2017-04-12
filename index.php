@@ -260,21 +260,17 @@ else if (!$msg)
 		{
 			$word = strtolower($words[$i]);
 			$sql = "SELECT response FROM kraken_msg WHERE phrase = '$word' AND user_attrib = '$user_submit' ORDER BY RAND() LIMIT 1";
-			if (list($dbmsg) = db_query($conn, $sql)) 
+			$dbmsg = db_query($conn, $sql);
+			if ($dbmsg['response']) 
 			{
-				$dbmsg = db_query($conn, $sql);
 				if ($chat_type != "private") 
-             {
+             	{
 					$msg = $reply_to_user;
 				}
 				$msg .= $dbmsg['response'];
 				break;
 			}
-			else
-			{
-				$msg = 'tset';
-			}
-		}		
+		}
 	}
 	
 	if (!$msg && (rand(1,4) == 1 || $chat_type == "private"))
@@ -283,7 +279,8 @@ else if (!$msg)
 		{
 			$word = strtolower($words[$i]);
 			$sql = "SELECT response FROM kraken_msg WHERE phrase = '$word' ORDER BY RAND() LIMIT 1";
-			if (list($dbmsg) = db_query($conn, $sql))
+			$dbmsg = db_query($conn, $sql);
+			if ($dbmsg['response'])
 			{
 				$dbmsg = db_query($conn, $sql);
 				$msg = $dbmsg['response'];
