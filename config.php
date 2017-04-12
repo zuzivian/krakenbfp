@@ -1,7 +1,7 @@
 <?php
 
 // Program Mode (0 = production, 1 = debug)
-$mode = 0;
+$mode = 1;
 
 
 
