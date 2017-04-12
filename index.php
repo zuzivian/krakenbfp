@@ -207,12 +207,12 @@ if ($chat_type == "private")
 			$msg = "No such message found.";
 		}
 	}
-	
-	else if ($cmd == '/huggles')
-	{
-		$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
-	}
 
+}
+
+else if ($cmd == '/huggles')
+{
+	$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
 }
 
 else if ( $cmd == '/find' || $cmd == '/id' || $cmd == '/addmsg' || $cmd == '/updatemsg' || $cmd == '/deletemsg' || $cmd == '/updatetrigger' || $cmd == '/updateattrib' )
