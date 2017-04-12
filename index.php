@@ -207,6 +207,11 @@ if ($chat_type == "private")
 			$msg = "No such message found.";
 		}
 	}
+	
+	else if ($cmd == '/huggles')
+	{
+		$msg = 'http://upload.storiesspace.com/192-huggles1em6.jpg';
+	}
 
 }
 
@@ -229,7 +234,8 @@ if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot"))
 /addmsg - Adds to Kraken's repertoire
 /deletemsg - Deletes a message of your own
 /find - conducts a message ID search
-/forward - retrieves message IDs 
+/forward - retrieves message ID
+/huggles - Ask for a huggle
 /id - lists details of any message
 /help - shows list of available commands
 /nonsense - encourages kraken to spew nonsense
