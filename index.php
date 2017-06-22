@@ -233,6 +233,7 @@ if (!$msg && ($cmd == "/help" || $cmd == "/help@bfpbot"))
 /id - lists details of any message
 /help - shows list of available commands
 /nonsense - encourages kraken to spew nonsense
+/roll - rolls an x sided dice
 /updateattrib - Updates the person attributed to a msg
 /updatemsg - Updates a message
 /updatetrigger - Updates the word associated with a msg";
@@ -248,6 +249,19 @@ else if ($cmd == "/nonsense" || $cmd == "/nonsense@bfpbot")
 {
 	// Spew nonsense.
 	$msg = select_random_msg($conn);
+}
+
+else if ($cmd == "/roll" || $cmd == "/roll@bfpbot")
+{
+   if (count($words) == 1)
+   {
+       if (rand(0,1)) 
+          $msg = "Yes";
+       else $msg = "No";
+   }
+   else {
+       $msg = "I choose " . rand(1,$words[1]) . " .";
+   }
 }
 
 else if (!$msg)   
