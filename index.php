@@ -11,7 +11,7 @@ require 'vendor/autoload.php';
 // Database functions can be found in db.php
 require 'db.php';
 
-$client = new Zelenin\Telegram\Bot\Api('252926927:AAE7Fa8RTYW2D-RVYJ1B6_A77QZg5vWLJNg'); // Set Telegram access token
+$client = new Zelenin\Telegram\Bot\Api('252926927:AAGn9YyPCMazL-obZpyBQLIYzaaKwQ0Xz-0'); // Set Telegram access token
 $update = json_decode(file_get_contents('php://input'));
 
 
