@@ -267,7 +267,7 @@ else if ($cmd == "/roll" || $cmd == "/roll@bfpbot")
 else if (!$msg)   
 {
 	// Check for any keywords listed in the text.
-	if (rand(1,5) <= 2 || $chat_type == "private")
+	if (rand(1,5) <= 1 || $chat_type == "private") //respond to user AND keyword
 	{
 
 		for ($i = 0; $words[$i]; $i++) 
@@ -287,7 +287,7 @@ else if (!$msg)
 		}		
 	}
 	
-	if (!$msg && (rand(1,4) == 1 || $chat_type == "private"))
+	if (!$msg && (rand(1,8) == 1 || $chat_type == "private")) //respond to keyword only
 	{
 		for ($i = 0; $words[$i]; $i++) 
 		{
@@ -302,7 +302,7 @@ else if (!$msg)
 		}	
 	}
 
-	if (!$msg && rand(1,70) == 1) 
+	if (!$msg && rand(1,100) == 1)  //respond to user only
 	{
 		if ($chat_type != "private") {
 			$msg = $reply_to_user;
