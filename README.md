@@ -1,7 +1,7 @@
 # KRAKEN Bot
 A bot that sends 'random' messages to the BFP Telegram chat group.
 
-##Description
+## Description
 I am BFP's lame joke extraordinaire. Feed me lines as you wish, but be warned: I am unpredictable!
 
 curently under heavy development. Do use and adapt at you own risk.
@@ -17,4 +17,4 @@ MIT License
 
 Author(s):
 
-© 2016 zuzivian
+© 2016-2018 zuzivian
